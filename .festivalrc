@@ -1,0 +1,12 @@
+
+ (voice_rab_diphone )
+ (set!  default_after_synth_hooks
+         (list
+                   (lambda (utt)
+                               (utt.wave.rescale utt 1.0 t))))
+
+(set!  default_after_synth_hooks 
+        (list 
+          (lambda (utt)
+            (utt.wave.rescale utt 1.0 t))))
+

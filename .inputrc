@@ -1,0 +1,9 @@
+# Include system wide settings which are ignored
+# by default if one has their own .inputrc
+$include /etc/inputrc
+
+set mark-symlinked-directories on
+
+“\e[5~”: history-search-backward
+“\e[6~”: history-search-forward
+

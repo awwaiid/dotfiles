@@ -1,0 +1,35 @@
+#!/bin/bash
+
+. $HOME/.profile
+
+if [ "$HOSTNAME" == "talon.thelackthereof.org" ]; then
+  TZ='America/New_York' xbindkeys
+  XLIB_SKIP_ARGB_VISUALS=1 chbg -mode maximize /home/awwaiid/tlt/pics/desktop-bg/talon.jpg
+  #XLIB_SKIP_ARGB_VISUALS=1 chbg -mode maximize /home/awwaiid/tlt/pics/desktop-bg/blue.png
+  /home/awwaiid/bin/osd-init
+  xhost +
+fi
+
+
+if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+  gnome-power-manager &
+  gnome-volume-control-applet &
+  nm-applet &
+  fscrotd &
+  xbindkeys
+  
+  # Calibrate
+  xsetwacom set stylus TopX 99
+  xsetwacom set stylus BottomX 26116
+  xsetwacom set stylus TopY 230
+  xsetwacom set stylus BottomY 16467
+
+  # Turn on touch gestures
+  xsetwacom set touch Gesture on
+
+  # Turn off multi-monitor movement
+  xsetwacom set stylus mmonitor 0
+
+fi
+
