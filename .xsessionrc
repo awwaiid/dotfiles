@@ -12,12 +12,32 @@ fi
 
 
 if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
+
+  # Background image!
+  nitrogen --restore
+
+  # Start a lovely system tray for holding icons
   trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+
+  # Gnome stuff
   gnome-power-manager &
   gnome-volume-control-applet &
   nm-applet &
+  bluetooth-applet &
+  # mail-notification &
+
+  # Watch for the flippy screen actions
   fscrotd &
+
+  # Custom keys
   xbindkeys
+
+  # Systemwide gesture recognition!
+  easystroke &
+
+  # On-Screen-Display
+  # For my F12 battery monitor thingie mostly
+  /home/awwaiid/bin/osd-init
   
   # Calibrate
   xsetwacom set stylus TopX 99
@@ -25,10 +45,11 @@ if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
   xsetwacom set stylus TopY 230
   xsetwacom set stylus BottomY 16467
 
-  # Turn on touch gestures
+  # Turn on touch gestures, like pinch-zoom or right-click
   xsetwacom set touch Gesture on
 
   # Turn off multi-monitor movement
+  # I don't know if this does anything
   xsetwacom set stylus mmonitor 0
 
 fi

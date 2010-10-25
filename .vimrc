@@ -148,7 +148,7 @@ au FileType tex set formatoptions-=c " For TeX documents auto-break everything
 " This one write the file and then runs it through mdoc to make ps,pdf,txt,etc
 com! Mdoc :w | !~/bin/mdoc '%'
 " This one does as above, but then runs gv on the ps
-com! Preview :w | !~/bin/mdoc '%' ; gv '%<.pdf'
+com! Preview :w | !~/bin/mdoc '%' ; acroread '%<.pdf'
 
 " Complete things with slases and colons in html mode
 au FileType html set isk+=:,/,~
@@ -251,7 +251,7 @@ endfunction
 noremap  ,gs  :call GotoSub(expand('<cword>'))<cr>
 
 " Presentation mode
-syntax off
+" syntax off
 
 set t_Co=88
 hi Comment ctermfg=85

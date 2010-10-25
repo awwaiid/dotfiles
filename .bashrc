@@ -1,3 +1,4 @@
+#!/bin/bash
 # awwaiid's .bashrc
 # Symlink from .profile and .bash_profile to this and all will be well
 
