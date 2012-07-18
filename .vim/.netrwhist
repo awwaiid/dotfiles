@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/awwaiid/download/llamalight-0.0829/config'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/awwaiid/tlt/projects/perl/z/Zemmings/lib/Zemmings'
+let g:netrw_dirhist_2='/home/awwaiid/tlt/projects/perl/z/Zemmings/lib'
+let g:netrw_dirhist_3='/home/awwaiid/icfp2012/lamda-miner'

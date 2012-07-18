@@ -1,0 +1,7 @@
+"1.0b6 (created: 2011/03/09 09:25:18)
+
+loadplugins '\.(js|penta)$'
+group user
+source! /home/awwaiid/.pentadactylrc.local
+
+" vim: set ft=pentadactyl:

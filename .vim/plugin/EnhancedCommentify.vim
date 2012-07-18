@@ -746,7 +746,7 @@ function s:GetFileTypeSettings(ft)
 		\ 'masm\|monk\|nasm\|ncf\|omnimark\|pic\|povini\|rebol\|'.
 		\ 'registry\|samba\|skill\|smith\|tags\|tasm\|tf\|winbatch\|'.
 		\ 'wvdial\|z8a\)$'
-	let b:ECcommentOpen = ';'
+	let b:ECcommentOpen = '#'
 	let b:ECcommentClose = ''
     elseif fileType =~ '^\(python\|perl\|[^w]*sh$\|tcl\|jproperties\|make\|'.
 		\ 'robots\|apacha\|apachestyle\|awk\|bc\|cfg\|cl\|conf\|'.

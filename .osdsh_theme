@@ -1,7 +1,6 @@
 #This osdsh theme was created for osdsh-0.6.0
 #with Tkosdshconfig, by Lord Darth Moultak
 dset(d,5)
-dset(f,-*-lucidatypewriter-bold-*-*-*-*-190-*-*-*-*-*-*)
 dset(C,#ccccff)
 dset(k,#000033)
 dset(o,0)

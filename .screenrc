@@ -12,6 +12,9 @@ defscrollback 10000
 # Ditch the annoying startup message
 startup_message off
 
+# Turn the vbell off
+# We'll let the terminal deal with it.
+vbell off
 
 # Remove the xoff keybinding, it is nothing but pain
 bind s
@@ -28,4 +31,28 @@ bindkey -k fe stuff ^M
 #  termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 #  # erase background with current bg color
 #  defbce "on"
+
+# Make all of our windows
+screen 0
+screen 1
+screen 2
+screen 3
+screen 4
+screen 5
+screen 6
+screen 7
+screen 8
+screen 9
+
+# Allow switching using symbols
+bind ! select 1
+bind @ select 2
+bind \# select 3
+bind $ select 4
+bind % select 5                                                      
+bind \^ select 6                                                     
+bind & select 7
+bind * select 8
+bind ( select 9
+bind ) select 0
 

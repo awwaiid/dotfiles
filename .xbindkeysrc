@@ -1,0 +1,109 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h 
+# The XK_ is not needed. 
+#
+# List of modifier (on my keyboard): 
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+#
+# Another way to specifie a key is to use 'xev' and set the 
+# keycode with c:nnn or the modifier with m:nnn where nnn is 
+# the keycode or the state returned by xev 
+#
+# This file is created by xbindkey_config 
+# The structure is : 
+# # Remark 
+# "command" 
+# m:xxx + c:xxx 
+# Shift+... 
+
+
+
+
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
+
+
+
+#OSD Battery
+"/home/awwaiid/bin/osd-battery"
+    m:0x8 + c:96
+    Alt + F12 
+
+#Next Song
+"/home/awwaiid/bin/osd-nextsong"
+    m:0x0 + c:122
+    XF86AudioLowerVolume 
+
+#volume up
+"amixer set Master 5%+,5%+ ; /home/awwaiid/bin/osd-sound"
+    m:0x4 + c:111
+    Control + Up 
+
+#volume down
+"amixer set Master 5%-,5%- ; /home/awwaiid/bin/osd-sound"
+    m:0x4 + c:116
+    Control + Down 
+
+#Mute
+"amixer set Master toggle ; /home/awwaiid/bin/osd-sound"
+    m:0x4 + c:127
+    Control + Pause 
+
+#Pause Polly
+"/home/awwaiid/bin/polly-pause"
+    m:0x0 + c:127
+    Pause 
+
+#sleep
+"sudo s2ram -f"
+    m:0x0 + c:223
+    NoSymbol 
+
+#Ignore C-F12
+""
+    m:0x4 + c:37
+    Control + Control_L 
+
+#Rotate
+"/home/awwaiid/bin/rotate"
+    m:0x0 + c:161
+    NoSymbol 
+
+#ScrollDown
+"xte 'key Page_Down'"
+    m:0x0 + c:186
+    XF86ScrollDown 
+
+#ScrollUp
+"xte 'key Page_Up'"
+    m:0x0 + c:185
+    XF86ScrollUp 
+
+#Gnome File Browser
+"gnome-open ~/"
+    m:0x0 + c:147
+    XF86MenuKB 
+
+#NumSwap toggle
+"numswap_toggle"
+    m:0x1 + c:62
+    Shift + Shift_R 
+
+#Reload on screen2
+"/home/awwaiid/bin/reload-browser "
+    m:0x8 + c:95
+    Alt + F11 
+
+#
+# End of xbindkeys configuration

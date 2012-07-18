@@ -11,7 +11,9 @@ if [ -n $PS1 ]; then
   : # These are executed only for interactive shells
 
   PAGER=/usr/bin/less
-  PATH=$HOME/bin:$PATH
+  PATH=$HOME/bin:$HOME/local/bin:$PATH
+  EDITOR=vim
+
   # PS1='\u@\h:\w\$ '
   PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
 
@@ -31,19 +33,33 @@ if [ -n $PS1 ]; then
   PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
   
   # export LS_COLORS=auto
-  alias ls='ls -F --color'
+  alias ls='ls -F --color --dereference-command-line-symlink-to-dir'
   alias ocaml='rlwrap ocaml || ocaml'
   alias open='gnome-open'
+  alias perldoc=cpandoc
+
+  # Make cpanm even more succinct
+  PERL_CPANM_OPT="--quiet"
 
   # enable programmable completion features (you don't need to enable
   # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
   # sources /etc/bash.bashrc).
+
+  if [ -f ~/local/perlbrew/etc/bashrc ]; then
+      source ~/local/perlbrew/etc/bashrc
+  fi
+
   if [ -f /etc/bash_completion ]; then
       . /etc/bash_completion
+      . setup-bash-complete
   fi
+
+  # Make a handy little calculator!
+  calc() { bc <<< "scale=5; $*"; }
 
 else
     : # Only for NON-interactive shells
+  export PATH=$HOME/bin:$HOME/local/bin:$PATH
 fi
 
 if shopt -q login_shell ; then

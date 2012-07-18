@@ -16,15 +16,27 @@ if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
   # Background image!
   nitrogen --restore
 
+  # Lovely cursor
+  xsetroot -cursor_name left_ptr
+
   # Start a lovely system tray for holding icons
   trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
 
   # Gnome stuff
-  gnome-power-manager &
+  eval $(gnome-keyring-daemon)
+  # export GNOME-KEYRING-SOCKET
+  # export GNOME-KEYRING-PID
+  # export GNOME_KEYRING_SOCKET
+  export GNOME_KEYRING_PID
+  export GNOME_KEYRING_CONTROL
+
+  # gnome-settings-daemon &
+  # gnome-power-manager &
   gnome-volume-control-applet &
   nm-applet &
   bluetooth-applet &
   # mail-notification &
+  update-notifier --startup-delay=60 &
 
   # Watch for the flippy screen actions
   fscrotd &
@@ -33,17 +45,33 @@ if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
   xbindkeys
 
   # Systemwide gesture recognition!
-  easystroke &
+  # easystroke &
 
   # On-Screen-Display
   # For my F12 battery monitor thingie mostly
   /home/awwaiid/bin/osd-init
   
   # Calibrate
-  xsetwacom set stylus TopX 99
-  xsetwacom set stylus BottomX 26116
-  xsetwacom set stylus TopY 230
-  xsetwacom set stylus BottomY 16467
+  # xsetwacom set stylus TopX 99
+  # xsetwacom set stylus BottomX 26116
+  # xsetwacom set stylus TopY 230
+  # xsetwacom set stylus BottomY 16467
+  
+  # xsetwacom set 'Serial Wacom Tablet stylus' TopX 99
+  # xsetwacom set 'Serial Wacom Tablet stylus' BottomX 26116
+  # xsetwacom set 'Serial Wacom Tablet stylus' TopY 230
+  # xsetwacom set 'Serial Wacom Tablet stylus' BottomY 16467
+  
+  xsetwacom set 'Serial Wacom Tablet stylus' TopX 90
+  xsetwacom set 'Serial Wacom Tablet stylus' BottomX 26167
+  xsetwacom set 'Serial Wacom Tablet stylus' TopY 189
+  xsetwacom set 'Serial Wacom Tablet stylus' BottomY 16433
+
+  # Option"MinX"    "12"
+  # Option"MaxX"    "2615"
+  # Option"MinY"    "18"
+  # Option"MaxY"    "1647"
+
 
   # Turn on touch gestures, like pinch-zoom or right-click
   xsetwacom set touch Gesture on

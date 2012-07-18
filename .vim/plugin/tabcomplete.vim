@@ -9,9 +9,8 @@ function! InsertTabWrapper(direction)
     endif
 endfunction
 
-"inoremap <tab> <c-r>=InsertTabWrapper ("backward")<cr>
-inoremap <tab> <c-r>=pumvisible() ? "\<lt>c-e>\<lt>c-n>" : InsertTabWrapper ("backward")<cr>
+"inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
+inoremap <Tab> <C-R>=pumvisible() ? "\<lt>C-E>\<lt>C-P>" : InsertTabWrapper ("backward")<CR>
 
-inoremap <s-tab> <c-r>=InsertTabWrapper ("forward")<cr>
-
+inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 

@@ -1,0 +1,10 @@
+[user]
+	email = awwaiid@thelackthereof.org
+	name = Brock Wilcox
+
+[alias]
+  up = !git fetch --all --tags --prune && git pull --rebase
+  rec = ! sh -c '(git add -p -- $@ && git commit -v) || git reset' --
+  ci  = commit
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
