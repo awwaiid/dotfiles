@@ -20,10 +20,6 @@ vbell off
 bind s
 bind ^s
 
-# Fix n900 enter key
-bindkey -k -a fe stuff ^M
-bindkey -k fe stuff ^M
-
 # terminfo and termcap for nice 256 color terminal
 # allow bold colors - necessary for some reason
 #  attrcolor b ".I"

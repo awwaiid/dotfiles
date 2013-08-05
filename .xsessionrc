@@ -23,12 +23,12 @@ if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
   trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
 
   # Gnome stuff
-  eval $(gnome-keyring-daemon)
+  # eval $(gnome-keyring-daemon)
   # export GNOME-KEYRING-SOCKET
   # export GNOME-KEYRING-PID
   # export GNOME_KEYRING_SOCKET
-  export GNOME_KEYRING_PID
-  export GNOME_KEYRING_CONTROL
+  # export GNOME_KEYRING_PID
+  # export GNOME_KEYRING_CONTROL
 
   # gnome-settings-daemon &
   # gnome-power-manager &
@@ -82,3 +82,36 @@ if [ "$HOSTNAME" == "ryujin.thelackthereof.org" ]; then
 
 fi
 
+if [ "$HOSTNAME" == "totoro" ]; then
+
+  # I don't think this works
+  xrandr --dpi 138/eDP1
+
+  # Start a lovely system tray for holding icons
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+
+  # Awesome notifications
+  xcompmgr &
+  # dunst &
+
+  # Fix the clickpad
+  on-screensaver &
+  fix-clickpad > /dev/null
+
+  # gnome-settings-daemon &
+  # gnome-power-manager &
+  # gnome-volume-control-applet &
+  # nm-applet &
+  # mail-notification &
+  # update-notifier --startup-delay=60 &
+  gnome-sound-applet &
+  bluetooth-applet &
+
+  # Custom keys
+  xbindkeys
+
+  # On-Screen-Display
+  # For my F12 battery monitor thingie mostly
+  # /home/awwaiid/bin/osd-init
+  
+fi

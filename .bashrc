@@ -40,18 +40,21 @@ if [ -n $PS1 ]; then
 
   # Make cpanm even more succinct
   PERL_CPANM_OPT="--quiet"
-
-  # enable programmable completion features (you don't need to enable
-  # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-  # sources /etc/bash.bashrc).
-
-  if [ -f ~/local/perlbrew/etc/bashrc ]; then
-      source ~/local/perlbrew/etc/bashrc
+  
+  # enable programmable completion features
+  if [ -f /etc/bash_completion ]; then
+      source /etc/bash_completion
   fi
 
-  if [ -f /etc/bash_completion ]; then
-      . /etc/bash_completion
-      . setup-bash-complete
+  # Yummy perlbrew -- local perl install
+  if [ -f ~/local/perlbrew/etc/bashrc ]; then
+      source ~/local/perlbrew/etc/bashrc
+      # source setup-bash-complete
+  fi
+
+  # Yummy rvm -- local ruby install
+  if [ -f ~/.rvm/scripts/rvm ]; then
+    source ~/.rvm/scripts/rvm
   fi
 
   # Make a handy little calculator!
@@ -69,4 +72,9 @@ else
 fi
 
 
+
+
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

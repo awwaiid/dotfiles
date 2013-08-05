@@ -1,13 +1,22 @@
 
-keycode 66 = Control_L
+! Switch capslock to ctrl
 clear Lock
+keycode 66 = Control_L
 add Control = Control_L
 
-keycode 133 = Caps_Lock
-!add Lock = Caps_Lock
+! Switch windows key and alt_L
+remove mod1 = Alt_L
+keycode 133 = Alt_L
+remove mod4 = Super_L
+keycode 64 = Super_L
+add mod1 = Alt_L
+add mod4 = Super_L
 
 keycode 135 = Multi_key
 
+!add mod1    = Alt_R
+!remove mod1 = Alt_L
+!add mod3 = Alt_L
 
 keycode  10 = exclam 1 exclam 1
 keycode  11 = at 2 at 2

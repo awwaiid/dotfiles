@@ -24,6 +24,8 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Layout.WindowArranger
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
+import XMonad.Actions.GroupNavigation
+import XMonad.Config.Gnome
 
 
 -- Help fix fullscreen apps
@@ -39,7 +41,7 @@ myTerminal           = "~/bin/terminal"
 
 myFocusFollowsMouse  = True      -- Whether focus follows the mouse pointer.
 myBorderWidth        = 1         -- Width of the window border in pixels.
-myModMask            = mod1Mask  -- This is left-alt usually
+myModMask            = mod4Mask  -- This is left-alt usually
 myNumlockMask        = 0         -- Treat numlock status separately (mod2Mask otherwise)
 myNormalBorderColor  = "#000000" -- was "#0B3B0B"
 myFocusedBorderColor = "#666666" -- was "#58FA58"
@@ -71,6 +73,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- Experimental!
       ((modm, xK_F5     ), spawn "reload-browser"),
 
+      -- Experimental!
+      ((modm, xK_i     ), spawn "x-paste"),
+
       -- close focused window
       ((modm .|. shiftMask, xK_c     ), kill),
 
@@ -84,19 +89,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- What is this one for?
       ((modm,               xK_n     ), refresh),
 
+      -- History based alt-tab
+      ((modm,               xK_Tab   ), nextMatch History (return True)),
+
       -- Move focus to the next window (standard alt-tab),
-      ((modm,               xK_Tab   ), windows W.focusDown),
+      --  ((modm,               xK_Tab   ), windows W.focusDown),
       
       -- Move focus to the previous window (standard shift-alt-tab),
-      ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp),
+      --  ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp),
 
       -- Move focus to the next window
-      -- ((modm,               xK_j     ), windows W.focusDown),
-      ((modm,               xK_j     ), focusDown),
+      ((modm,               xK_j     ), windows W.focusDown),
+      --  ((modm,               xK_j     ), focusDown),
 
       -- Move focus to the previous window
-      -- ((modm,               xK_k     ), windows W.focusUp  ),
-      ((modm,               xK_k     ), focusUp  ),
+      ((modm,               xK_k     ), windows W.focusUp  ),
+      --  ((modm,               xK_k     ), focusUp  ),
 
       -- Move focus to the master window
       ((modm,               xK_m     ), windows W.focusMaster  ),
@@ -205,7 +213,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- mod- keypad {/,*,-}, Switch to physical/Xinerama screens 1, 2, or 3
       -- mod-shift- keypad {/,*,-}, Move client to screen 1, 2, or 3
       ((m, key), screenWorkspace sc >>= flip whenJust (windows . f))
-          | (key, sc) <- zip [xK_KP_Divide, xK_KP_Multiply, xK_KP_Subtract] [0..]
+          | (key, sc) <- zip [xK_KP_Subtract, xK_KP_Multiply, xK_KP_Divide] [0..]
           , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
 
@@ -263,23 +271,20 @@ myLayout =
   --  $ noBorders
   $ smartBorders
   $ tiled
-    ||| simpleTabbed
+    ||| (noBorders $ simpleTabbed)
     ||| mirror_tiled
-    ||| Full
+    --  ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled  =
        noBorders
-       $ windowNavigation
        -- $ subTabbed
        $ boringWindows
        $ spacing 1
-       --  $ Tall nmaster delta ratio
        $ mouseResizableTile
 
      mirror_tiled  =
        noBorders
-       $ windowNavigation
        -- $ subTabbed
        $ boringWindows
        $ spacing 1
@@ -333,7 +338,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = historyHook
 
 myUrgencyHook = SpawnUrgencyHook "ledson " 
 
@@ -345,7 +350,8 @@ myUrgencyHook = SpawnUrgencyHook "ledson "
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+-- myStartupHook = return ()
+myStartupHook = gnomeRegister
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

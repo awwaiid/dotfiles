@@ -2,6 +2,9 @@
 " My Very Own .vimrc
 " Brock Wilcox (awwaiid@thelackthereof.org)
 
+" Pathogen! Loads stuff better. Load this early!
+call pathogen#infect()
+
 " **********************************
 " ******** GENERAL SETTINGS ********
 " **********************************
@@ -39,6 +42,7 @@ set formatoptions+=r    " Insert comment-header on enter (auto-comment)
 set formatoptions+=o    " Insert comment-header on 'o'
 set formatoptions+=q    " Format comments with gq
 set formatoptions+=c    " For most things don't auto-break comments
+set cpoptions+=n        " Include line-wrap indicator in number column
 
 " Save undo stuff in this directory (instead of local)
 set undofile
@@ -46,14 +50,23 @@ set undodir=~/.vim_undo//,.,~/tmp,~/
 
 " Save ~ files to this global shared dir if possible
 set backup
-set backupdir=~/.vim_backup//,.,~/tmp,~/
-set dir=~/.vim_backup//,.,~/tmp,~/
+set backupdir=~/.vim_backup//,.,~/tmp//,~//
+set dir=~/.vim_backup//,.,~/tmp//,~//
 
 " Add nested star lists to comments, good for wiki editing
 set comments+=:******,:*****,:****,:***,:**
 
 " Not too likely I'll want to edit these files, so skip tab-complete
-set wildignore+=*.jpg,*.png,*.gif,*.pdf,_darcs,blib,_build,.gz,.bz2,.bak,cpan
+set wildignore+=*.jpg,*.png,*.gif,*.pdf
+set wildignore+=_darcs,.git,.hg
+set wildignore+=blib,_build
+set wildignore+=*.gz,*.bz2
+set wildignore+=*.bak
+set wildignore+=cpan
+set wildignore+=*.class,*.jar
+set wildignore+=*.pyc
+set wildignore+=local " don't know about this one...
+set wildignore+=*.odt
 
 " status line: filename(flags) filetype row, col cur% file-lines
 set statusline=%f%m%r%h%w\ %y\ %=%l,%c\ %p%%\ %L
@@ -66,13 +79,17 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 "  stuff defaults to darkblue which is unreadable
-hi PreProc ctermfg=lightyellow
+" hi PreProc ctermfg=lightyellow
+
+" Lets have a nice little color scheme!
+colorscheme Tomorrow-Night-Bright-Trans
 
 " And nice grey comments
 " set t_Co=88
 set t_Co=256
 "hi Comment ctermfg=59
-hi Comment ctermfg=8
+" hi Comment ctermfg=8
+hi Comment ctermfg=247
 
 hi CursorLine   cterm=NONE ctermbg=17
 hi CursorColumn cterm=NONE ctermbg=17
@@ -163,6 +180,9 @@ imap <c-right> <c-o>]}
 " Control-tab for omni-complete
 imap <c-tab> <c-x><c-o>
 
+" Fix common mistakes
+iab BRock Brock
+
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
 " ********************************************
@@ -179,7 +199,7 @@ au FileType tex set formatoptions-=c " For TeX documents auto-break everything
 " This one write the file and then runs it through mdoc to make ps,pdf,txt,etc
 com! Mdoc :w | !~/bin/mdoc '%'
 " This one does as above, but then runs gv on the ps
-com! Preview :w | !~/bin/mdoc '%' ; acroread '%<.pdf'
+com! Preview :w | silent !~/bin/mdoc '%' ; gnome-open '%:r.pdf'
 
 " Complete things with slases and colons in html mode
 au FileType html set isk+=:,/,~
@@ -204,53 +224,93 @@ au BufNewFile,BufRead
   \mutt-*-\w\+,mutt\w\{6\},ae\d\+.txt,/tmp/SLRN[0-9A-Z.]\+,*.eml
   \ set syntax=text spell spelllang=en_us
 
+" Add the filetype for .als Alloy files
+au BufRead,BufNewFile *.als setfiletype alloy4
 
 " *********************************
 " ******** PLUGIN SETTINGS ********
 " *********************************
 
-" Pathogen! Loads stuff better.
-call pathogen#infect()
-
 " Enhanced Commentify
+" -------------------
 let g:EnhCommentifyRespectIndent = 'Yes'
 let g:EnhCommentifyUseAltKeys = 'No'
 let g:EnhCommentifyFirstLineMode = 'Yes'
 let g:EnhCommentifyMultiPartBlocks = 'Yes'
 let g:EnhCommentifyPretty = 'Yes'
 
-
-" Command-T: Fix up current selection highlight color
+" Command-T
+" ---------
+" Fix up current selection highlight color
 hi CommandTSelection term=NONE cterm=NONE ctermfg=white ctermbg=59
 
-" Command-T: Fix up-arrow, left-arrow, and backspace
+" Fix up-arrow, left-arrow, and backspace
 let g:CommandTSelectPrevMap=['<C-p>','<C-k>','<Esc>0A','<Up>']
 let g:CommandTCursorLeftMap=['<Left>']
 let g:CommandTBackspaceMap=['<BS>', '<C-h>']
 
-" Command-T: Use ctrl-t for command-t!
-nmap <silent> <C-t> :CommandT<CR>
-nmap <silent> <C-b> :CommandTBuffer<CR>
+" Use ctrl-t for command-t!
+" nmap <silent> <C-t> :CommandT<CR>
 
-" Command-T: Keep the results at the top to save eyeball focus
+" Narrow the search to just the current buffers
+" nmap <silent> <C-b> :CommandTBuffer<CR>
+
+" Keep the results at the top to save eyeball focus
 let g:CommandTMatchWindowAtTop=1
 
 " LOTS OF FILES
 let g:CommandTMaxFiles=100000
 
+" Syntastic!
+" ----------
+"au FileType perl SyntasticEnable
+let g:syntastic_enable_signs=1
+set statusline+=%{SyntasticStatuslineFlag()}
+" Only care about errors... warnings my eye!
+let g:syntastic_quiet_warnings=1
+
+" Auto-open/close error window
+let g:syntastic_auto_loc_list=1 " or 2 for only auto-close
+
+" OK, syntastic is annoying. Disable it by default.
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': [] }
+
 " Tagbar
+" ------
 nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
+let g:tagbar_sort = 0
 
-" Toggle a nice undo-tree 
-nnoremap <F3> :GundoToggle<CR>
+
+" Undo-Tree
+" ---------
+nnoremap <F3> :UndotreeToggle<CR>
+nnoremap <C-u> :UndotreeToggle<CR>
+let g:undotree_SplitLocation = 'botright'
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_HighlightSyntax = "cursorline"
+
+" Ctrl-P (Alternative to Command-T)
+" ---------------------------------
+" hi CtrlPPrtCursor term=NONE cterm=NONE ctermfg=white ctermbg=59
+hi CtrlPLinePre term=NONE cterm=NONE ctermfg=white ctermbg=59
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_max_height = 100
+let g:ctrlp_max_files = 100000
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_working_path_mode = ''
+nmap <silent> <C-b> :CtrlPBuffer<CR>
+nmap <silent> <C-l> :CtrlPLineAll<CR>
 
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********
 " ****************************************
 
 " Working at LSI ... they like tabs
-if ($HOSTNAME == "wickedwitch")
+if ($HOSTNAME == "wickedwitch" || $HOSTNAME == "wickedwitch2")
   set sw=2                " Width to shift and indent things
   set ts=2                " Set tabsize to 2 (to view other people's crap)
   set noet                " Use tabs. Even though tabs are the devil.
@@ -259,6 +319,16 @@ if ($HOSTNAME == "wickedwitch")
 	" Run the failing tests
 	nnoremap <silent> <F10> :w \| :silent ! bin/test_suite.pl failing >> tests.log 2>&1 &<cr>
 	imap <F10> <C-O><F10>
+
+  " Use our own syntastic wrapper, deals with LSI code
+  let g:syntastic_perl_efm_program = '~/bin/vimcheck_perl.pl -c'
+	let g:syntastic_mode_map = { 'mode': 'active',
+														 \ 'active_filetypes': [],
+														 \ 'passive_filetypes': [] }
+
+  " Load .tt files correctly
+  au BufNewFile,BufRead *.tt setf tt2
+
 endif
 
 
@@ -365,4 +435,10 @@ nmap <silent>  ;=  :call AlignAssignments()<CR>
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
+
+" TEMPORARY
+au FileType java set sw=2                " Width to shift and indent things
+au FileType java set ts=2                " Set tabsize to 2 (to view other people's crap)
+au FileType java set noet                " Use tabs. Even though tabs are the devil.
 

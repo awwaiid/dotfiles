@@ -45,4 +45,9 @@ if version >= 500
   set mousehide
 endif
 
+" For demos
+set guifont=Courier\ 22
+set syntax=off
+colorscheme desert
+let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
 

@@ -66,3 +66,9 @@ tags=unread;inbox;
 #
 [maildir]
 synchronize_flags=true
+
+
+[addressbook]
+path=/home/awwaiid/.notmuch-abook.db
+backend=sqlite3
+

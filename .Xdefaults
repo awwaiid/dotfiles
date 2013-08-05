@@ -1,3 +1,10 @@
+! Force DPI
+Xft.dpi: 139
+
+! Disable Keycap Picture insert mode:
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
@@ -6,9 +13,10 @@ URxvt.matcher.button: 1
 !urxvt*cursorUnderline: true
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
-! URxvt.foreground: white
-! URxvt.depth: 32
-! URxvt*background: rgba:0000/0000/0000/8888
+URxvt.foreground: white
+URxvt.depth: 32
+! URxvt*background: rgba:0000/0000/0000/CCCC
+URxvt*background: rgba:0000/0000/0000/AAAA
 ! URxvt.fading: 40
 ! URxvt.fadeColor: [0]black
 

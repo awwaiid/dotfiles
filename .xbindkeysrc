@@ -37,13 +37,18 @@
 
 #OSD Battery
 "/home/awwaiid/bin/osd-battery"
-    m:0x8 + c:96
-    Alt + F12 
+    m:0x50 + c:96
+    Mod2+Mod4 + F12 
+
+#OSD Battery-Copy
+"/home/awwaiid/bin/osd-battery"
+    m:0x18 + c:96
+    Alt+Mod2 + F12 
 
 #Next Song
 "/home/awwaiid/bin/osd-nextsong"
-    m:0x0 + c:122
-    XF86AudioLowerVolume 
+    m:0x10 + c:78
+    Mod2 + Scroll_Lock 
 
 #volume up
 "amixer set Master 5%+,5%+ ; /home/awwaiid/bin/osd-sound"
@@ -65,6 +70,11 @@
     m:0x0 + c:127
     Pause 
 
+#Rotate
+"/home/awwaiid/bin/rotate"
+    m:0x0 + c:161
+    NoSymbol 
+
 #sleep
 "sudo s2ram -f"
     m:0x0 + c:223
@@ -74,11 +84,6 @@
 ""
     m:0x4 + c:37
     Control + Control_L 
-
-#Rotate
-"/home/awwaiid/bin/rotate"
-    m:0x0 + c:161
-    NoSymbol 
 
 #ScrollDown
 "xte 'key Page_Down'"
@@ -104,6 +109,11 @@
 "/home/awwaiid/bin/reload-browser "
     m:0x8 + c:95
     Alt + F11 
+
+#Remark
+"xscreensaver-command -lock"
+    m:0x4 + c:45
+    Control + k 
 
 #
 # End of xbindkeys configuration
