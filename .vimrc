@@ -260,7 +260,7 @@ let g:syntastic_auto_loc_list=1 " or 2 for only auto-close
 
 " OK, syntastic is annoying. Disable it by default.
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
+                           \ 'active_filetypes': ['ruby'],
                            \ 'passive_filetypes': [] }
 
 " Tagbar
@@ -268,7 +268,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_sort = 0
-
 
 " Undo-Tree
 " ---------
