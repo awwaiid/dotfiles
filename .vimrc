@@ -323,54 +323,6 @@ endif
 " ******** TOO LAZY TO MAKE PLUGIN ********
 " *****************************************
 
-" From http://use.perl.org/~Ovid/journal/36929
-" By Ovid
-
-function! GotoSub(subname)
-  let files  = []
-
-  " find paths to modules with that sub
-  let paths = split(system("ack --perl -l 'sub\\s+".a:subname."' lib"), "\n")
-
-  if empty(paths)
-      echomsg("Subroutine '".a:subname."' not found")
-  else
-      let file = PickFromList('file', paths)
-      execute "edit " . file
-
-      " jump to where that sub is defined
-      execute "/sub\\s\\+"  . a:subname . "\\>"
-  endif
-endfunction
-
-" Of course, you might wonder what that "pick from list" is. I keep needing to
-" either let a user select from a list of choices (usually file names) or just
-" return the one damned choice if there is only one.
-
-function! PickFromList( name, list, ... )
-    let forcelist = a:0 && a:1 ? 1 : 0
-
-    if 1 == len(a:list) && !forcelist
-        let choice = 0
-    else
-        let lines = [ 'Choose a '. a:name . ':' ]
-            \ + map(range(1, len(a:list)), 'v:val .": ". a:list[v:val - 1]')
-        let choice  = inputlist(lines)
-        if choice > 0 && choice <= len(a:list)
-            let choice = choice - 1
-        else
-            let choice = choice - 1
-        endif
-    end
-
-    return a:list[choice]
-endfunction
-
-" And the actual mapping is simple:
-noremap  ,gs  :call GotoSub(expand('<cword>'))<cr>
-
-
-
 " From http://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html
 function! AlignAssignments ()
     "Patterns needed to locate assignment operators...
