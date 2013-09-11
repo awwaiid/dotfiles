@@ -46,7 +46,7 @@ if version >= 500
 endif
 
 " For demos
-set guifont=Courier\ 22
+set guifont=Courier\ New\ 11
 set syntax=off
 colorscheme desert
 let &guicursor = substitute(&guicursor, 'n-v-c:', '&blinkon0-', '')
