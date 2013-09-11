@@ -248,31 +248,8 @@ let g:EnhCommentifyFirstLineMode = 'Yes'
 let g:EnhCommentifyMultiPartBlocks = 'Yes'
 let g:EnhCommentifyPretty = 'Yes'
 
-" Command-T
-" ---------
-" Fix up current selection highlight color
-hi CommandTSelection term=NONE cterm=NONE ctermfg=white ctermbg=59
-
-" Fix up-arrow, left-arrow, and backspace
-let g:CommandTSelectPrevMap=['<C-p>','<C-k>','<Esc>0A','<Up>']
-let g:CommandTCursorLeftMap=['<Left>']
-let g:CommandTBackspaceMap=['<BS>', '<C-h>']
-
-" Use ctrl-t for command-t!
-" nmap <silent> <C-t> :CommandT<CR>
-
-" Narrow the search to just the current buffers
-" nmap <silent> <C-b> :CommandTBuffer<CR>
-
-" Keep the results at the top to save eyeball focus
-let g:CommandTMatchWindowAtTop=1
-
-" LOTS OF FILES
-let g:CommandTMaxFiles=100000
-
 " Syntastic!
 " ----------
-"au FileType perl SyntasticEnable
 let g:syntastic_enable_signs=1
 set statusline+=%{SyntasticStatuslineFlag()}
 " Only care about errors... warnings my eye!
