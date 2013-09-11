@@ -214,6 +214,12 @@ au FileType perl set isk+=:
 " When searching the perl path, include ./ and lib/
 let perlpath="lib,."
 
+" Complete things with questionmarks and colons in perl mode (Like Module::)
+" au FileType ruby set isk+=:
+au FileType ruby set isk+=?
+
+au FileType coffee set isk-=:
+
 " Sometimes I need to tidy up a bit. Only makes sense for HTML.
 com! Tidy %!tidy --force-output y -i -wrap 80 --clean y 2>/dev/null
 
