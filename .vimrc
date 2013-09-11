@@ -285,10 +285,12 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_max_height = 100
 let g:ctrlp_max_files = 100000
-let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_map = '<c-t>'
 nmap <silent> <C-b> :CtrlPBuffer<CR>
-nmap <silent> <C-l> :CtrlPLineAll<CR>
+
+
 
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********
