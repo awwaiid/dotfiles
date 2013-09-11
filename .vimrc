@@ -169,7 +169,10 @@ imap <F8> <C-O><F8>
 " vmap ,ga :<C-U>!cvs annotate % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Get the hg annotation of the highlighted lines
-vmap ,ga :<C-U>!hg annotate -udqc % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" vmap ,ga :<C-U>!hg annotate -udqc % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" Get the hg annotation of the highlighted lines
+vmap ,ga :<C-U>!git blame % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Experimental use of shift-arrow to jump between braces
 map <c-left> [{
