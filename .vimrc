@@ -5,6 +5,7 @@
 " Pathogen! Loads stuff better. Load this early!
 call pathogen#infect()
 
+
 " **********************************
 " ******** GENERAL SETTINGS ********
 " **********************************
@@ -87,7 +88,7 @@ colorscheme Tomorrow-Night-Bright-Trans
 " And nice grey comments
 " set t_Co=88
 set t_Co=256
-"hi Comment ctermfg=59
+" hi Comment ctermfg=59
 " hi Comment ctermfg=8
 hi Comment ctermfg=247
 
@@ -183,6 +184,7 @@ imap <c-tab> <c-x><c-o>
 " Fix common mistakes
 iab BRock Brock
 
+
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
 " ********************************************
@@ -227,6 +229,7 @@ au BufNewFile,BufRead
 " Add the filetype for .als Alloy files
 au BufRead,BufNewFile *.als setfiletype alloy4
 
+
 " *********************************
 " ******** PLUGIN SETTINGS ********
 " *********************************
@@ -238,6 +241,7 @@ let g:EnhCommentifyUseAltKeys = 'No'
 let g:EnhCommentifyFirstLineMode = 'Yes'
 let g:EnhCommentifyMultiPartBlocks = 'Yes'
 let g:EnhCommentifyPretty = 'Yes'
+
 
 " Command-T
 " ---------
@@ -261,6 +265,7 @@ let g:CommandTMatchWindowAtTop=1
 " LOTS OF FILES
 let g:CommandTMaxFiles=100000
 
+
 " Syntastic!
 " ----------
 "au FileType perl SyntasticEnable
@@ -277,6 +282,7 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
 
+
 " Tagbar
 " ------
 nnoremap <F1> :TagbarToggle<cr>
@@ -291,6 +297,7 @@ nnoremap <C-u> :UndotreeToggle<CR>
 let g:undotree_SplitLocation = 'botright'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightSyntax = "cursorline"
+
 
 " Ctrl-P (Alternative to Command-T)
 " ---------------------------------
@@ -428,6 +435,11 @@ endfunction
 
 nmap <silent>  ;=  :call AlignAssignments()<CR>
 
+
+" ******************************
+" ******** RANDOM STUFF ********
+" ******************************
+
 " Presentation mode
 " syntax off
 " set t_Co=88
@@ -435,7 +447,6 @@ nmap <silent>  ;=  :call AlignAssignments()<CR>
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
 
 " TEMPORARY
 au FileType java set sw=2                " Width to shift and indent things
