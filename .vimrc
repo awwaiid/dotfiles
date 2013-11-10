@@ -150,8 +150,7 @@ nnoremap <silent> <F4> :nohlsearch<cr>
 " Show invisible tabs
 nnoremap <silent> <F5> :set invlist<cr>
 " Show line numbers
-" nnoremap <silent> <F6> :set invnumber invcursorline invcursorcolumn<cr>
-nnoremap <silent> <F6> :set invnumber invcursorline<cr>
+nnoremap <silent> <F6> :set invnumber invcursorline \| GitGutterToggle<cr>
 " Don't wrap lines
 nnoremap <silent> <F7> :set invwrap<cr>
 " Toggle paste mode
