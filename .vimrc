@@ -313,84 +313,22 @@ let g:ctrlp_working_path_mode = ''
 nmap <silent> <C-b> :CtrlPBuffer<CR>
 nmap <silent> <C-l> :CtrlPLineAll<CR>
 
+
+" GitGutter (show how file has changed in realtime)
+" -------------------------------------------------
+let g:gitgutter_enabled = 0
+
+
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********
 " ****************************************
 
-" Working at LSI ... they like tabs
-if ($HOSTNAME == "wickedwitch" || $HOSTNAME == "wickedwitch2")
-  set sw=2                " Width to shift and indent things
-  set ts=2                " Set tabsize to 2 (to view other people's crap)
-  set noet                " Use tabs. Even though tabs are the devil.
-  match errorMsg /[^\t]\zs\t\+/
-
-	" Run the failing tests
-	nnoremap <silent> <F10> :w \| :silent ! bin/test_suite.pl failing >> tests.log 2>&1 &<cr>
-	imap <F10> <C-O><F10>
-
-  " Use our own syntastic wrapper, deals with LSI code
-  let g:syntastic_perl_efm_program = '~/bin/vimcheck_perl.pl -c'
-	let g:syntastic_mode_map = { 'mode': 'active',
-														 \ 'active_filetypes': [],
-														 \ 'passive_filetypes': [] }
-
-  " Load .tt files correctly
-  au BufNewFile,BufRead *.tt setf tt2
-
-endif
+" ... none for now!
 
 
 " *****************************************
 " ******** TOO LAZY TO MAKE PLUGIN ********
 " *****************************************
-
-" From http://use.perl.org/~Ovid/journal/36929
-" By Ovid
-
-function! GotoSub(subname)
-  let files  = []
-
-  " find paths to modules with that sub
-  let paths = split(system("ack --perl -l 'sub\\s+".a:subname."' lib"), "\n")
-
-  if empty(paths)
-      echomsg("Subroutine '".a:subname."' not found")
-  else
-      let file = PickFromList('file', paths)
-      execute "edit " . file
-
-      " jump to where that sub is defined
-      execute "/sub\\s\\+"  . a:subname . "\\>"
-  endif
-endfunction
-
-" Of course, you might wonder what that "pick from list" is. I keep needing to
-" either let a user select from a list of choices (usually file names) or just
-" return the one damned choice if there is only one.
-
-function! PickFromList( name, list, ... )
-    let forcelist = a:0 && a:1 ? 1 : 0
-
-    if 1 == len(a:list) && !forcelist
-        let choice = 0
-    else
-        let lines = [ 'Choose a '. a:name . ':' ]
-            \ + map(range(1, len(a:list)), 'v:val .": ". a:list[v:val - 1]')
-        let choice  = inputlist(lines)
-        if choice > 0 && choice <= len(a:list)
-            let choice = choice - 1
-        else
-            let choice = choice - 1
-        endif
-    end
-
-    return a:list[choice]
-endfunction
-
-" And the actual mapping is simple:
-noremap  ,gs  :call GotoSub(expand('<cword>'))<cr>
-
-
 
 " From http://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html
 function! AlignAssignments ()
