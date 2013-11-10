@@ -57,6 +57,7 @@ set dir=~/.vim_backup//,.,~/tmp//,~//
 
 " Add nested star lists to comments, good for wiki editing
 set comments+=:******,:*****,:****,:***,:**
+set comments+=:······,:·····,:····,:···,:··,:·
 
 " Not too likely I'll want to edit these files, so skip tab-complete
 set wildignore+=*.jpg,*.png,*.gif,*.pdf
