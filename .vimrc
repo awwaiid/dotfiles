@@ -109,8 +109,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 " *******************************************
 
 " I like to insert time stamps - these are macros to do it
-iab Ydtime <c-r>=strftime("%Y.%m.%d.%H.%M")<cr>
-iab Ydate <c-r>=strftime("%Y.%m.%d")<cr>
+iab Ydtime <c-r>=strftime("%Y-%m-%d-%H-%M")<cr>
+iab Ydate <c-r>=strftime("%Y-%m-%d")<cr>
 iab Yldate <c-r>=strftime("$%Y\\cdot%m\\cdot%d$")<cr>
 
 " Spell checking is usefull for all sorts of things
@@ -286,7 +286,7 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 
 " Tagbar
 " ------
-nnoremap <F1> :TagbarToggle<cr>
+" nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_sort = 0
 
@@ -317,6 +317,11 @@ nmap <silent> <C-l> :CtrlPLineAll<CR>
 " GitGutter (show how file has changed in realtime)
 " -------------------------------------------------
 let g:gitgutter_enabled = 0
+
+
+" Fireplace / Overtone
+" --------------------
+nnoremap <F1> :Eval (stop)<cr>
 
 
 " ****************************************

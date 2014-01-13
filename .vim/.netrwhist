@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/awwaiid/tlt/projects/perl/App-garkarrum/lib/App/GarKarRum'
 let g:netrw_dirhist_2='/home/awwaiid/tlt/projects/perl/Devel-Vestige/lib/Devel/Vestige'
 let g:netrw_dirhist_3='/home/awwaiid/tlt/projects/perl/Plack-Middleware-Scrutiny/lib/Plack/Middleware/Scrutiny'
 let g:netrw_dirhist_4='/home/awwaiid/tlt/projects/perl/urxvt-cursortail'
+let g:netrw_dirhist_5='/home/awwaiid/tmp/cs545-proj'
+let g:netrw_dirhist_6='/home/awwaiid/tmp/noise/src/noise'
+let g:netrw_dirhist_7='/home/awwaiid/tmp/noise/src'
+let g:netrw_dirhist_8='/home/awwaiid/tmp/noise'
+let g:netrw_dirhist_9='/home/awwaiid/tmp/noise/src'
