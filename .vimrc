@@ -171,7 +171,10 @@ imap <F8> <C-O><F8>
 " vmap ,ga :<C-U>!cvs annotate % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Get the hg annotation of the highlighted lines
-vmap ,ga :<C-U>!hg annotate -udqc % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" vmap ,ga :<C-U>!hg annotate -udqc % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" Get the hg annotation of the highlighted lines
+vmap ,ga :<C-U>!git blame % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Experimental use of shift-arrow to jump between braces
 map <c-left> [{
@@ -214,6 +217,12 @@ au FileType perl set isk+=:
 " When searching the perl path, include ./ and lib/
 let perlpath="lib,."
 
+" Complete things with questionmarks and colons in perl mode (Like Module::)
+" au FileType ruby set isk+=:
+au FileType ruby set isk+=?
+
+au FileType coffee set isk-=:
+
 " Sometimes I need to tidy up a bit. Only makes sense for HTML.
 com! Tidy %!tidy --force-output y -i -wrap 80 --clean y 2>/dev/null
 
@@ -243,33 +252,8 @@ let g:EnhCommentifyFirstLineMode = 'Yes'
 let g:EnhCommentifyMultiPartBlocks = 'Yes'
 let g:EnhCommentifyPretty = 'Yes'
 
-
-" Command-T
-" ---------
-" Fix up current selection highlight color
-hi CommandTSelection term=NONE cterm=NONE ctermfg=white ctermbg=59
-
-" Fix up-arrow, left-arrow, and backspace
-let g:CommandTSelectPrevMap=['<C-p>','<C-k>','<Esc>0A','<Up>']
-let g:CommandTCursorLeftMap=['<Left>']
-let g:CommandTBackspaceMap=['<BS>', '<C-h>']
-
-" Use ctrl-t for command-t!
-" nmap <silent> <C-t> :CommandT<CR>
-
-" Narrow the search to just the current buffers
-" nmap <silent> <C-b> :CommandTBuffer<CR>
-
-" Keep the results at the top to save eyeball focus
-let g:CommandTMatchWindowAtTop=1
-
-" LOTS OF FILES
-let g:CommandTMaxFiles=100000
-
-
 " Syntastic!
 " ----------
-"au FileType perl SyntasticEnable
 let g:syntastic_enable_signs=1
 set statusline+=%{SyntasticStatuslineFlag()}
 " Only care about errors... warnings my eye!
@@ -280,16 +264,14 @@ let g:syntastic_auto_loc_list=1 " or 2 for only auto-close
 
 " OK, syntastic is annoying. Disable it by default.
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
+                           \ 'active_filetypes': ['ruby'],
                            \ 'passive_filetypes': [] }
-
 
 " Tagbar
 " ------
 " nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_sort = 0
-
 
 " Undo-Tree
 " ---------
@@ -308,10 +290,12 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_max_height = 100
 let g:ctrlp_max_files = 100000
-let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_map = '<c-t>'
 nmap <silent> <C-b> :CtrlPBuffer<CR>
-nmap <silent> <C-l> :CtrlPLineAll<CR>
+
+
 
 
 " GitGutter (show how file has changed in realtime)

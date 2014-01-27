@@ -2,6 +2,8 @@
 # by default if one has their own .inputrc
 $include /etc/inputrc
 
+set bell-style none
+
 set mark-symlinked-directories on
 
 “\e[5~”: history-search-backward

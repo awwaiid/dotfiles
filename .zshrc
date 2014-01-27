@@ -87,6 +87,81 @@ if [ -n $PS1 ]; then
   # group by tag names
   zstyle ':completion:*' group-name ''
 
+
+  # -------------------------------------------------------
+  # OH MY! ZSH!
+  #
+  # Path to your oh-my-zsh configuration.
+  ZSH=$HOME/.oh-my-zsh
+
+  # Set name of the theme to load.
+  # Look in ~/.oh-my-zsh/themes/
+  # Optionally, if you set this to "random", it'll load a random theme each
+  # time that oh-my-zsh is loaded.
+  # ZSH_THEME="robbyrussell"
+  ZSH_THEME="genehack"
+
+  # Example aliases
+  # alias zshconfig="mate ~/.zshrc"
+  # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+  # Set to this to use case-sensitive completion
+  # CASE_SENSITIVE="true"
+
+  # Comment this out to disable bi-weekly auto-update checks
+  DISABLE_AUTO_UPDATE="true"
+
+  # Uncomment to change how often before auto-updates occur? (in days)
+  # export UPDATE_ZSH_DAYS=13
+
+  # Uncomment following line if you want to disable colors in ls
+  # DISABLE_LS_COLORS="true"
+
+  # Uncomment following line if you want to disable autosetting terminal title.
+  # DISABLE_AUTO_TITLE="true"
+
+  # Uncomment following line if you want to disable command autocorrection
+  # DISABLE_CORRECTION="true"
+
+  # Uncomment following line if you want red dots to be displayed while waiting for completion
+  # COMPLETION_WAITING_DOTS="true"
+
+  # Uncomment following line if you want to disable marking untracked files under
+  # VCS as dirty. This makes repository status check for large repositories much,
+  # much faster.
+  # DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+  # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+  # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+  # Example format: plugins=(rails git textmate ruby lighthouse)
+  plugins=(git)
+
+  # source $ZSH/oh-my-zsh.sh
+
+  #
+
+  setopt prompt_subst
+  autoload -Uz vcs_info
+  #  zstyle ':vcs_info:*' actionformats \
+      #  '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
+      #  '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+  zstyle ':vcs_info:*' formats       \
+      '%F{2}[%F{2}%b%F{2}]%f'
+      #  '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+  zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+  zstyle ':vcs_info:*' enable git cvs svn
+
+  # or use pre_cmd, see man zshcontrib
+  vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+      echo "%{$fg[lightgrey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+    fi
+  }
+  RPROMPT=$'$(vcs_info_wrapper)'
+
+
 else
     : # Only for NON-interactive shells
   export PATH=$HOME/bin:$HOME/local/bin:$PATH
