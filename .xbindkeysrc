@@ -36,69 +36,44 @@
 
 
 #OSD Battery
-"/home/awwaiid/bin/osd-battery"
-    m:0x50 + c:96
-    Mod2+Mod4 + F12 
+"$HOME/bin/osd-battery"
+    m:0x40 + c:96
+    Mod4 + F12 
 
 #OSD Battery-Copy
-"/home/awwaiid/bin/osd-battery"
-    m:0x18 + c:96
-    Alt+Mod2 + F12 
+"$HOME/bin/osd-battery"
+    m:0x8 + c:96
+    Alt + F12 
 
 #Next Song
-"/home/awwaiid/bin/osd-nextsong"
+"$HOME/bin/osd-nextsong"
     m:0x10 + c:78
     Mod2 + Scroll_Lock 
 
 #volume up
-"amixer set Master 5%+,5%+ ; /home/awwaiid/bin/osd-sound"
+"amixer set Master 5%+,5%+ ; $HOME/bin/osd-sound"
     m:0x4 + c:111
     Control + Up 
 
 #volume down
-"amixer set Master 5%-,5%- ; /home/awwaiid/bin/osd-sound"
+"amixer set Master 5%-,5%- ; $HOME/bin/osd-sound"
     m:0x4 + c:116
     Control + Down 
 
 #Mute
-"amixer set Master toggle ; /home/awwaiid/bin/osd-sound"
+"amixer set Master toggle ; $HOME/bin/osd-sound"
     m:0x4 + c:127
     Control + Pause 
 
 #Pause Polly
-"/home/awwaiid/bin/polly-pause"
+"$HOME/bin/polly-pause"
     m:0x0 + c:127
     Pause 
-
-#Rotate
-"/home/awwaiid/bin/rotate"
-    m:0x0 + c:161
-    NoSymbol 
-
-#sleep
-"sudo s2ram -f"
-    m:0x0 + c:223
-    NoSymbol 
 
 #Ignore C-F12
 ""
     m:0x4 + c:37
     Control + Control_L 
-
-#ScrollDown
-"xte 'key Page_Down'"
-    m:0x0 + c:186
-    XF86ScrollDown 
-
-#ScrollUp
-"xte 'key Page_Up'"
-    m:0x0 + c:185
-    XF86ScrollUp 
-
-#Gnome File Browser
-"gnome-open ~/"
-    m:0x0 + c:147
-    XF86MenuKB 
 
 #NumSwap toggle
 "numswap_toggle"
@@ -106,14 +81,24 @@
     Shift + Shift_R 
 
 #Reload on screen2
-"/home/awwaiid/bin/reload-browser "
+"$HOME/bin/reload-browser "
     m:0x8 + c:95
     Alt + F11 
 
 #Remark
-"xscreensaver-command -lock"
-    m:0x4 + c:45
-    Control + k 
+"gnome-screensaver-command --lock"
+    m:0x44 + c:36
+    Control+Mod4 + Return 
+
+#Remark-Copy
+"gnome-screensaver-command --lock"
+    m:0x0 + c:104
+    KP_Enter 
+
+#Type password
+"$HOME/bin/getpass"
+    m:0x4 + c:67
+    Control + F1 
 
 #
 # End of xbindkeys configuration

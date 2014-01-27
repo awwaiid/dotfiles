@@ -43,6 +43,9 @@ if [ -n $PS1 ]; then
   alias open='gnome-open'
   # alias perldoc=cpandoc
 
+  # Ruby/Rails
+  alias be='bundle exec'
+
   # Make cpanm even more succinct
   PERL_CPANM_OPT="--quiet"
   
@@ -62,6 +65,9 @@ if [ -n $PS1 ]; then
   if [ -f ~/.rvm/scripts/rvm ]; then
     source ~/.rvm/scripts/rvm
   fi
+
+  # Try to fix xmonad-vs-openoffice
+  # export SAL_USE_VCLPLUGIN=gen
 
   # Make a handy little calculator!
   #  calc() { bc <<< "scale=5; $*"; }
