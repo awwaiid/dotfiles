@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/awwaiid/tlt/projects/perl/App-garkarrum/lib/App/GarKarRum'
 let g:netrw_dirhist_2='/home/awwaiid/tlt/projects/perl/Devel-Vestige/lib/Devel/Vestige'
 let g:netrw_dirhist_3='/home/awwaiid/tlt/projects/perl/Plack-Middleware-Scrutiny/lib/Plack/Middleware/Scrutiny'
 let g:netrw_dirhist_4='/home/bwilcox/.offlineimap'
+let g:netrw_dirhist_5='/home/bwilcox/.rvm/gems/ruby-1.9.3-p448/gems/puffing-billy-0.2.1/lib/billy'
