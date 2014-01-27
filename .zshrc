@@ -42,6 +42,7 @@ if [ -n $PS1 ]; then
   alias ocaml='rlwrap ocaml || ocaml'
   alias open='gnome-open'
   # alias perldoc=cpandoc
+  alias log-optoro='task log proj:optoro'
 
   # Ruby/Rails
   alias be='bundle exec'

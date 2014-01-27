@@ -5,6 +5,7 @@
 " Pathogen! Loads stuff better. Load this early!
 call pathogen#infect()
 
+
 " **********************************
 " ******** GENERAL SETTINGS ********
 " **********************************
@@ -43,6 +44,7 @@ set formatoptions+=o    " Insert comment-header on 'o'
 set formatoptions+=q    " Format comments with gq
 set formatoptions+=c    " For most things don't auto-break comments
 set cpoptions+=n        " Include line-wrap indicator in number column
+let mapleader=","       " Use ',' as the Leader
 
 " Save undo stuff in this directory (instead of local)
 set undofile
@@ -55,6 +57,7 @@ set dir=~/.vim_backup//,.,~/tmp//,~//
 
 " Add nested star lists to comments, good for wiki editing
 set comments+=:******,:*****,:****,:***,:**
+set comments+=:······,:·····,:····,:···,:··,:·
 
 " Not too likely I'll want to edit these files, so skip tab-complete
 set wildignore+=*.jpg,*.png,*.gif,*.pdf
@@ -87,7 +90,7 @@ colorscheme Tomorrow-Night-Bright-Trans
 " And nice grey comments
 " set t_Co=88
 set t_Co=256
-"hi Comment ctermfg=59
+" hi Comment ctermfg=59
 " hi Comment ctermfg=8
 hi Comment ctermfg=247
 
@@ -106,8 +109,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 " *******************************************
 
 " I like to insert time stamps - these are macros to do it
-iab Ydtime <c-r>=strftime("%Y.%m.%d.%H.%M")<cr>
-iab Ydate <c-r>=strftime("%Y.%m.%d")<cr>
+iab Ydtime <c-r>=strftime("%Y-%m-%d-%H-%M")<cr>
+iab Ydate <c-r>=strftime("%Y-%m-%d")<cr>
 iab Yldate <c-r>=strftime("$%Y\\cdot%m\\cdot%d$")<cr>
 
 " Spell checking is usefull for all sorts of things
@@ -147,8 +150,7 @@ nnoremap <silent> <F4> :nohlsearch<cr>
 " Show invisible tabs
 nnoremap <silent> <F5> :set invlist<cr>
 " Show line numbers
-" nnoremap <silent> <F6> :set invnumber invcursorline invcursorcolumn<cr>
-nnoremap <silent> <F6> :set invnumber invcursorline<cr>
+nnoremap <silent> <F6> :set invnumber invcursorline \| GitGutterToggle<cr>
 " Don't wrap lines
 nnoremap <silent> <F7> :set invwrap<cr>
 " Toggle paste mode
@@ -187,6 +189,7 @@ imap <c-tab> <c-x><c-o>
 
 " Fix common mistakes
 iab BRock Brock
+
 
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
@@ -238,6 +241,7 @@ au BufNewFile,BufRead
 " Add the filetype for .als Alloy files
 au BufRead,BufNewFile *.als setfiletype alloy4
 
+
 " *********************************
 " ******** PLUGIN SETTINGS ********
 " *********************************
@@ -267,7 +271,7 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 
 " Tagbar
 " ------
-nnoremap <F1> :TagbarToggle<cr>
+" nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_sort = 0
 let g:tabgbar_ctags_bin="/usr/local/bin/ctags"
@@ -298,6 +302,7 @@ let g:undotree_SplitLocation = 'botright'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightSyntax = "cursorline"
 
+
 " Ctrl-P (Alternative to Command-T)
 " ---------------------------------
 " hi CtrlPPrtCursor term=NONE cterm=NONE ctermfg=white ctermbg=59
@@ -321,31 +326,22 @@ nmap <silent> <C-b> :CtrlPBuffer<CR>
 " AddTabularPattern = /^[^=]*\zs=>\?=\?
 
 
+
+" GitGutter (show how file has changed in realtime)
+" -------------------------------------------------
+let g:gitgutter_enabled = 0
+
+
+" Fireplace / Overtone
+" --------------------
+nnoremap <F1> :Eval (stop)<cr>
+
+
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********
 " ****************************************
 
-" Working at LSI ... they like tabs
-if ($HOSTNAME == "wickedwitch" || $HOSTNAME == "wickedwitch2")
-  set sw=2                " Width to shift and indent things
-  set ts=2                " Set tabsize to 2 (to view other people's crap)
-  set noet                " Use tabs. Even though tabs are the devil.
-  match errorMsg /[^\t]\zs\t\+/
-
-	" Run the failing tests
-	nnoremap <silent> <F10> :w \| :silent ! bin/test_suite.pl failing >> tests.log 2>&1 &<cr>
-	imap <F10> <C-O><F10>
-
-  " Use our own syntastic wrapper, deals with LSI code
-  let g:syntastic_perl_efm_program = '~/bin/vimcheck_perl.pl -c'
-	let g:syntastic_mode_map = { 'mode': 'active',
-														 \ 'active_filetypes': [],
-														 \ 'passive_filetypes': [] }
-
-  " Load .tt files correctly
-  au BufNewFile,BufRead *.tt setf tt2
-
-endif
+" ... none for now!
 
 
 " *****************************************
@@ -396,6 +392,11 @@ endfunction
 
 nmap <silent>  ;=  :call AlignAssignments()<CR>
 
+
+" ******************************
+" ******** RANDOM STUFF ********
+" ******************************
+
 " Presentation mode
 " syntax off
 " set t_Co=88
@@ -403,7 +404,6 @@ nmap <silent>  ;=  :call AlignAssignments()<CR>
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
 
 " TEMPORARY
 au FileType java set sw=2                " Width to shift and indent things
