@@ -2,6 +2,6 @@
 
 loadplugins '\.(js|penta)$'
 group user
-source! /home/awwaiid/.pentadactylrc.local
+source! ~/.pentadactylrc.local
 
 " vim: set ft=pentadactyl:

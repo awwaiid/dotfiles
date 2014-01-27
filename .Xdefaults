@@ -7,6 +7,7 @@ URxvt.iso14755_52: false
 
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
+URxvt.url-launcher: firefox
 URxvt.matcher.button: 1
 !urxvt*cursorUnderline: false
 !URxvt.cursorColor: #ffff00
@@ -22,4 +23,10 @@ URxvt*background: rgba:0000/0000/0000/AAAA
 
 ! URxvt.saveLines:32767
 ! URxvt.scrollBar: false
+
+! URxvt.keysym.S-Return: <C-Return>
+
+! URxvt.color4: #3456ac
+URxvt*color4: #567B94
+URxvt*color12: #7CB2D6
 

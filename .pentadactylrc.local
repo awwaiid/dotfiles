@@ -11,27 +11,16 @@ set passkeys+='google.com/reader':jkvrs
 nmap h H
 nmap l L
 
-//javascript <<EOF
-//(function(){
-//var feedPanel = document.createElement("statusbarpanel");
-//feedPanel.setAttribute("id", "feed-panel-clone");
-//feedPanel.appendChild(document.getElementById("feed-button"));
-//feedPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
-//document.getElementById("status-bar")
-//.insertBefore(feedPanel, document.getElementById("security-button"));
-//})();
-//EOF
-
 map zo :js Zotero_Browser.scrapeThisPage(".")<CR>
 
-javascript <<EOF
-(function(){
-var zoteroPanel = document.createElement("statusbarpanel");
-zoteroPanel.setAttribute("id", "zotero-panel-clone");
-zoteroPanel.appendChild(document.getElementById("zotero-status-image"));
-zoteroPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
-document.getElementById("status-bar")
-.insertBefore(zoteroPanel, document.getElementById("security-button"));
-})();
-EOF
+" javascript <<EOF
+"   (function(){
+"     var zoteroPanel = document.createElement("statusbarpanel");
+"     zoteroPanel.setAttribute("id", "zotero-panel-clone");
+"     zoteroPanel.appendChild(document.getElementById("zotero-status-image"));
+"     zoteroPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
+"     document.getElementById("status-bar")
+"     .insertBefore(zoteroPanel, document.getElementById("security-button"));
+"   })();
+" EOF
 

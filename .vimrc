@@ -152,8 +152,9 @@ nnoremap <silent> <F6> :set invnumber invcursorline<cr>
 " Don't wrap lines
 nnoremap <silent> <F7> :set invwrap<cr>
 " Toggle paste mode
-nnoremap <silent> <F8> :set invpaste paste?<cr>
+nnoremap <silent> <F8> :set invpaste!<cr>
 set pastetoggle=<F8>
+
 
 " These F-n keys call out to normal mode from insert mode
 imap <F1> <C-O><F1>
@@ -173,6 +174,7 @@ imap <F8> <C-O><F8>
 
 " Get the hg annotation of the highlighted lines
 vmap ,ga :<C-U>!git blame % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap ,ga :<C-U>!git blame -L <C-R>=line("'<")<CR>,<C-R>=line("'>")<CR> -e % \| jirablame <CR>
 
 " Experimental use of shift-arrow to jump between braces
 map <c-left> [{
@@ -251,7 +253,7 @@ let g:EnhCommentifyPretty = 'Yes'
 " Syntastic!
 " ----------
 let g:syntastic_enable_signs=1
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 " Only care about errors... warnings my eye!
 let g:syntastic_quiet_warnings=1
 
@@ -268,6 +270,25 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_sort = 0
+let g:tabgbar_ctags_bin="/usr/local/bin/ctags"
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+" let g:known_types.ruby.kinds = [
+    " \ {'short' : 'm', 'long' : 'modules',           'fold' : 0, 'stl' : 1},
+    " \ {'short' : 'c', 'long' : 'classes',           'fold' : 0, 'stl' : 1},
+    " \ {'short' : 'd', 'long' : 'describes',         'fold' : 0, 'stl' : 1},
+    " \ {'short' : 'C', 'long' : 'contexts',          'fold' : 0, 'stl' : 1},
+    " \ {'short' : 'f', 'long' : 'methods',           'fold' : 0, 'stl' : 1},
+    " \ {'short' : 'F', 'long' : 'singleton methods', 'fold' : 0, 'stl' : 1}
+" \ ]
 
 " Undo-Tree
 " ---------
@@ -290,6 +311,14 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_map = '<c-t>'
 nmap <silent> <C-b> :CtrlPBuffer<CR>
 
+" Tabular!
+" --------
+
+" ruby new hash syntax
+" AddTabularPattern : /\w:\zs/l0l1
+
+" General =, ==, =>
+" AddTabularPattern = /^[^=]*\zs=>\?=\?
 
 
 " ****************************************
