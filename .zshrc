@@ -167,6 +167,8 @@ if [ -n $PS1 ]; then
   }
   RPROMPT=$'$(vcs_info_wrapper)'
 
+  # Experimental ctrl-backspace
+  bindkey -M emacs '' backward-kill-word
 
 else
     : # Only for NON-interactive shells
