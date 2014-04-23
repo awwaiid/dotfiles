@@ -119,8 +119,8 @@ com! Spellcheck :execute '!aspell -c "%"' | edit
 com! GSpellcheck :execute '!gaspell %' | edit " I don't think this works
 
 " For doing english editing hard-wrapping text is nice
-map <c-f> gggqG " ^F = format whole document
-map f gqap      " f = format this paragraph
+" map <c-f> gggqG " ^F = format whole document
+" map f gqap      " f = format this paragraph
 
 " For editing I like to move up/down single screen lines (wrapped)
 map <up> gk
