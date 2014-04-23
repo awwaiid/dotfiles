@@ -191,6 +191,8 @@ imap <c-tab> <c-x><c-o>
 " Fix common mistakes
 iab BRock Brock
 
+" Kill whole words like other places
+inoremap <C-BS> <C-W>
 
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
