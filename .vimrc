@@ -45,6 +45,7 @@ set formatoptions+=q    " Format comments with gq
 set formatoptions+=c    " For most things don't auto-break comments
 set cpoptions+=n        " Include line-wrap indicator in number column
 let mapleader=","       " Use ',' as the Leader
+set nomodeline          " By default, don't use modelines in files
 
 " Save undo stuff in this directory (instead of local)
 set undofile
