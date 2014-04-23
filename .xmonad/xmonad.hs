@@ -271,7 +271,8 @@ myLayout =
   --  $ noBorders
   $ smartBorders
   $ tiled
-    ||| (noBorders $ simpleTabbed)
+    -- ||| (noBorders $ simpleTabbed)
+    ||| simpleTabbed
     ||| mirror_tiled
     --  ||| Full
   where
