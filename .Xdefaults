@@ -5,7 +5,7 @@ Xft.dpi: 139
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.urlLauncher: firefox
 URxvt.url-launcher: firefox
 URxvt.matcher.button: 1
@@ -27,6 +27,9 @@ URxvt*background: rgba:0000/0000/0000/AAAA
 ! URxvt.keysym.S-Return: <C-Return>
 
 ! URxvt.color4: #3456ac
+
 URxvt*color4: #567B94
 URxvt*color12: #7CB2D6
+! URxvt*color4: #FFFFFF
+! URxvt*color12: #FFFFFF
 
