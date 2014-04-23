@@ -1,0 +1,5 @@
+--regex-ruby=/^(\s*)(describe|context|it) (['"]?)([^']+|[^"]+)\3 do$/.\1\4/d,rspec describe/
+--regex-ruby=/^(\s*)(it_behaves_like) (['"]?)([^']+|[^"]+)\3$/.\1it behaves like \4/d,rspec describe/
+--regex-ruby=/^(\s*)(shared_examples_for) (['"]?)([^']+|[^"]+)\3$/.\1shared examples for \4/d,rspec describe/
+--regex-ruby=/^\s*(event .*) do$/\1/s,state machine/
+--regex-ruby=/^\s*(.*)_transition (.*) do/\1 \2/s,state machine/

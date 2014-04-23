@@ -273,6 +273,8 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 " ------
 " nnoremap <F1> :TagbarToggle<cr>
 nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
+let g:tagbar_compact = 1
+let g:tagbar_width = 60
 let g:tagbar_sort = 0
 let g:tabgbar_ctags_bin="/usr/local/bin/ctags"
 let g:tagbar_type_ruby = {
@@ -280,19 +282,12 @@ let g:tagbar_type_ruby = {
         \ 'm:modules',
         \ 'c:classes',
         \ 'd:describes',
+        \ 's:states',
         \ 'C:contexts',
         \ 'f:methods',
         \ 'F:singleton methods'
     \ ]
 \ }
-" let g:known_types.ruby.kinds = [
-    " \ {'short' : 'm', 'long' : 'modules',           'fold' : 0, 'stl' : 1},
-    " \ {'short' : 'c', 'long' : 'classes',           'fold' : 0, 'stl' : 1},
-    " \ {'short' : 'd', 'long' : 'describes',         'fold' : 0, 'stl' : 1},
-    " \ {'short' : 'C', 'long' : 'contexts',          'fold' : 0, 'stl' : 1},
-    " \ {'short' : 'f', 'long' : 'methods',           'fold' : 0, 'stl' : 1},
-    " \ {'short' : 'F', 'long' : 'singleton methods', 'fold' : 0, 'stl' : 1}
-" \ ]
 
 " Undo-Tree
 " ---------
