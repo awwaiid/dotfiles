@@ -311,8 +311,8 @@ fullScreenFloats = composeOne [ isFullscreen -?> doFullFloat ]
 
 -- These are run when matching windows are first created
 applicationHooks = composeAll [
-    className =? "MPlayer"        --> doFloat,
-    className =? "Gimp"           --> doFloat,
+    -- className =? "MPlayer"        --> doFloat,
+    -- className =? "Gimp"           --> doFloat,
     resource  =? "desktop_window" --> doIgnore,
     resource  =? "kdesktop"       --> doIgnore,
     resource  =? "xfce4-notifyd"  --> doIgnore
