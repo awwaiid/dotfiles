@@ -26,6 +26,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
 import XMonad.Actions.GroupNavigation
 import XMonad.Config.Gnome
+import XMonad.Util.Paste
 
 
 -- Help fix fullscreen apps
@@ -74,7 +75,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ((modm, xK_F5     ), spawn "reload-browser"),
 
       -- Experimental!
-      ((modm, xK_i     ), spawn "x-paste"),
+      ((modm, xK_i     ), pasteSelection),
 
       -- close focused window
       ((modm .|. shiftMask, xK_c     ), kill),
