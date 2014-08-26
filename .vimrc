@@ -2,6 +2,12 @@
 " My Very Own .vimrc
 " Brock Wilcox (awwaiid@thelackthereof.org)
 
+" Hook in neovim python support
+if has('neovim')
+  let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
+  let &initpython = s:python_host_init
+endif
+
 " Pathogen! Loads stuff better. Load this early!
 call pathogen#infect()
 
@@ -176,8 +182,8 @@ imap <F8> <C-O><F8>
 " vmap ,ga :<C-U>!hg annotate -udqc % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Get the hg annotation of the highlighted lines
-vmap ,ga :<C-U>!git blame % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-vmap ,ga :<C-U>!git blame -L <C-R>=line("'<")<CR>,<C-R>=line("'>")<CR> -e % \| jirablame <CR>
+" vmap ,ga :<C-U>!git blame -w % \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap ,ga :<C-U>!git blame -v -L <C-R>=line("'<")<CR>,<C-R>=line("'>")<CR> -e % \| jirablame <CR>
 
 " Experimental use of shift-arrow to jump between braces
 map <c-left> [{

@@ -55,15 +55,30 @@
     m:0x4 + c:111
     Control + Up 
 
+#volume up media
+"amixer set Master 5%+,5%+ ; $HOME/bin/osd-sound"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume 
+
 #volume down
 "amixer set Master 5%-,5%- ; $HOME/bin/osd-sound"
     m:0x4 + c:116
     Control + Down 
 
+#volume down media
+"amixer set Master 5%-,5%- ; $HOME/bin/osd-sound"
+    m:0x0 + c:122
+    XF86AudioLowerVolume 
+
 #Mute
 "amixer set Master toggle ; $HOME/bin/osd-sound"
     m:0x4 + c:127
     Control + Pause 
+
+#Mute media
+"amixer set Master toggle ; $HOME/bin/osd-sound"
+    m:0x0 + c:121
+    XF86AudioMute 
 
 #Pause Polly
 "$HOME/bin/polly-pause"
@@ -76,7 +91,7 @@
     Control + Control_L 
 
 #NumSwap toggle
-"numswap_toggle"
+"$HOME/bin/numswap_toggle"
     m:0x1 + c:62
     Shift + Shift_R 
 

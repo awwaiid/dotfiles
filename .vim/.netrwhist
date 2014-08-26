@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/bwilcox/local/dotfiles/.vim/bundle/closetag'
+let g:netrw_dirhist_2='/home/bwilcox/code/blinq/app/views/layouts'
+let g:netrw_dirhist_3='/home/bwilcox/code/inventory/config/deploy'
+let g:netrw_dirhist_4='/home/bwilcox/code/amazon-mws'
+let g:netrw_dirhist_5='/home/bwilcox/code/amazon-mws/lib'
+let g:netrw_dirhist_6='/home/bwilcox/code/amazon-mws/lib/amazon'
+let g:netrw_dirhist_7='/home/bwilcox/code/inventory/app/views/shared'
+let g:netrw_dirhist_8='/home/bwilcox/code/inventory'
+let g:netrw_dirhist_9='/home/bwilcox/code/inventory/lib/client_uploads/lib/client_uploads'

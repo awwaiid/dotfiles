@@ -43,7 +43,7 @@ if [ -n $PS1 ]; then
   
   # enable programmable completion features
   if [ -f /etc/bash_completion ]; then
-      source /etc/bash_completion
+      # source /etc/bash_completion
   fi
 
   # Yummy perlbrew -- local perl install
@@ -78,3 +78,4 @@ fi
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+source ~/.fzf.bash
