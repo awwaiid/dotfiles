@@ -9,6 +9,10 @@
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	in  = "!git remote update -p; git log ..@{u}"
 	out = log @{u}..
+  unstash = stash pop
 
 [color]
 	ui = true
+
+[push]
+	default = simple
