@@ -27,6 +27,7 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Actions.GroupNavigation
 import XMonad.Config.Gnome
 import XMonad.Util.Paste
+import XMonad.Hooks.EwmhDesktops
 
 
 -- Help fix fullscreen apps
@@ -214,7 +215,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       -- mod- keypad {/,*,-}, Switch to physical/Xinerama screens 1, 2, or 3
       -- mod-shift- keypad {/,*,-}, Move client to screen 1, 2, or 3
       ((m, key), screenWorkspace sc >>= flip whenJust (windows . f))
-          | (key, sc) <- zip [xK_KP_Subtract, xK_KP_Multiply, xK_KP_Divide] [0..]
+          | (key, sc) <- zip [xK_KP_Divide, xK_KP_Multiply, xK_KP_Subtract] [0..]
           , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
 
@@ -332,7 +333,9 @@ myManageHook = fullScreenFloats <+> applicationHooks
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+-- myEventHook = mempty
+-- myEventHook = ewmhDesktopsEventHook
+myEventHook = fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -342,7 +345,7 @@ myEventHook = mempty
 --
 myLogHook = historyHook
 
-myUrgencyHook = SpawnUrgencyHook "ledson " 
+myUrgencyHook = SpawnUrgencyHook "/home/bwilcox/bin/ledson " 
 
 ------------------------------------------------------------------------
 -- Startup hook

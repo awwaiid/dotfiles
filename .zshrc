@@ -1,15 +1,14 @@
 #!/bin/zsh
-# awwaiid's .bashrc
+# awwaiid's .zshrc
 # Symlink from .profile and .bash_profile to this and all will be well
 
-# Source global definitions
-#  if [ -f /etc/bashrc ]; then
-  #  . /etc/bashrc
-#  fi
+
 
 if [ -n $PS1 ]; then
   : # These are executed only for interactive shells
 
+  #  echo "My file: $0" >&2
+  #  echo "My shell: $SHELL" >&2
   PAGER=/usr/bin/less
   PATH=$HOME/bin:$HOME/local/bin:$PATH
   EDITOR=vim
@@ -28,7 +27,6 @@ if [ -n $PS1 ]; then
 
   [ -x /usr/bin/dircolors ] && eval `dircolors $HOME/.dir_colors`
 
-  export HISTCONTROL=ignoredups # No dups in bash_history
   #  shopt -s checkwinsize # update LINES and COLUMNS
 
   # make less more friendly for non-text input files, see lesspipe(1)
@@ -45,7 +43,7 @@ if [ -n $PS1 ]; then
   alias log-optoro='task log proj:optoro'
 
   # Ruby/Rails
-  alias be='bundle exec'
+  alias be='LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1 bundle exec'
 
   # Make cpanm even more succinct
   PERL_CPANM_OPT="--quiet"
@@ -68,18 +66,21 @@ if [ -n $PS1 ]; then
   fi
 
   # Try to fix xmonad-vs-openoffice
-  # export SAL_USE_VCLPLUGIN=gen
+  export SAL_USE_VCLPLUGIN=gen
 
   # Make a handy little calculator!
   #  calc() { bc <<< "scale=5; $*"; }
 
   ## History
-  HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
-  setopt APPEND_HISTORY          # append rather than overwrite history file.
-  HISTSIZE=1200                  # lines of history to maintain memory
-  SAVEHIST=1000                  # lines of history to maintain in history file.
-  setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HISTSIZE
-  setopt EXTENDED_HISTORY        # save timestamp and runtime information
+  HISTFILE=$HOME/.zhistory      # enable history saving on shell exit
+  HISTSIZE=1200                 # lines of history to maintain memory
+  SAVEHIST=10000                # lines of history to maintain in history file.
+  HISTCONTROL=ignoredups        # No dups in bash_history
+  setopt APPEND_HISTORY         # append rather than overwrite history file.
+  setopt HIST_EXPIRE_DUPS_FIRST # allow dups, but expire old ones when I hit HISTSIZE
+  setopt EXTENDED_HISTORY       # save timestamp and runtime information
+
+  # Rehash stuff all the time
   zstyle ":completion:*:commands" rehash 1
 
   # Taskwarrior!
@@ -170,6 +171,10 @@ if [ -n $PS1 ]; then
   # Experimental ctrl-backspace
   bindkey -M emacs '' backward-kill-word
 
+  # Ruby GC settings
+  export RUBY_GC_MALLOC_LIMIT=90000000
+
+
 else
     : # Only for NON-interactive shells
   export PATH=$HOME/bin:$HOME/local/bin:$PATH
@@ -188,3 +193,5 @@ fi
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
+source ~/.fzf.zsh

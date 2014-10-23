@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
-. $HOME/.profile
+. $HOME/.zprofile
 
 if [ "$HOSTNAME" == "talon.thelackthereof.org" ]; then
   TZ='America/New_York' xbindkeys
