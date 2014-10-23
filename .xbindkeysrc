@@ -100,5 +100,20 @@
     m:0x4 + c:67
     Control + F1 
 
+#Paste password
+"$HOME/bin/getpass"
+    m:0x4 + c:67
+    Control + F1 
+
+#Paste username
+"$HOME/bin/getpass 1"
+    m:0x4 + c:68
+    Control + F2 
+
+#Insert Stuff
+"xvkbd -text '\S\[Insert]'"
+    m:0x40 + c:64
+    Mod4 + Super_L 
+
 #
 # End of xbindkeys configuration

@@ -84,31 +84,32 @@ fi
 
 if [ "$HOSTNAME" == "totoro" ]; then
 
+  nitrogen --restore
+  xmodmap /home/awwaiid/.Xmodmap >/tmp/xmodlog.txt 2>&1
+
   # I don't think this works
-  xrandr --dpi 138/eDP1
+  # xrandr --dpi 138/eDP1
 
   # Start a lovely system tray for holding icons
   trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
 
-  # Awesome notifications
   xcompmgr &
-  # dunst &
 
   # Fix the clickpad
-  on-screensaver &
-  fix-clickpad > /dev/null
+  # on-screensaver &
+  # fix-clickpad > /dev/null
 
   # gnome-settings-daemon &
   # gnome-power-manager &
   # gnome-volume-control-applet &
-  # nm-applet &
+  nm-applet &
   # mail-notification &
   # update-notifier --startup-delay=60 &
-  gnome-sound-applet &
-  bluetooth-applet &
+  # gnome-sound-applet &
+  # bluetooth-applet &
 
   # Custom keys
-  xbindkeys
+  # xbindkeys
 
   # On-Screen-Display
   # For my F12 battery monitor thingie mostly
