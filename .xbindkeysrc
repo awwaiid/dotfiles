@@ -106,7 +106,7 @@
     Control+Mod4 + Return 
 
 #Remark-Copy
-"gnome-screensaver-command --lock"
+"xscreensaver-command -l"
     m:0x0 + c:104
     KP_Enter 
 
