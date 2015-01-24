@@ -42,9 +42,9 @@ if [ -n $PS1 ]; then
   PERL_CPANM_OPT="--quiet"
   
   # enable programmable completion features
-  if [ -f /etc/bash_completion ]; then
+  #if [ -f /etc/bash_completion ]; then
       # source /etc/bash_completion
-  fi
+  #fi
 
   # Yummy perlbrew -- local perl install
   if [ -f ~/local/perlbrew/etc/bashrc ]; then
