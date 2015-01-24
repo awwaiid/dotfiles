@@ -11,7 +11,7 @@ if [ -n $PS1 ]; then
   #  echo "My shell: $SHELL" >&2
   PAGER=/usr/bin/less
   PATH=$HOME/bin:$HOME/local/bin:$PATH
-  EDITOR=vim
+  EDITOR=/usr/bin/vim
 
   # PS1='\u@\h:\w\$ '
   #  PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
@@ -174,6 +174,9 @@ if [ -n $PS1 ]; then
   # Ruby GC settings
   export RUBY_GC_MALLOC_LIMIT=90000000
 
+  # Android SDK
+  export PATH=$PATH:~/local/android-sdk-linux/tools
+
 
 else
     : # Only for NON-interactive shells
@@ -194,4 +197,4 @@ fi
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
-source ~/.fzf.zsh
+[[ -f "$HOME/.fzf.zsh" ]] && source ~/.fzf.zsh
