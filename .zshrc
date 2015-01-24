@@ -196,3 +196,7 @@ fi
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_DEFAULT_OPTS="--reverse"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# OPAM configuration
+[ -f ~/.opam/opam-init/init.zsh ] && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
