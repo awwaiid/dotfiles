@@ -312,9 +312,10 @@ let g:undotree_HighlightSyntax = "cursorline"
 " ---------------------------------
 " hi CtrlPPrtCursor term=NONE cterm=NONE ctermfg=white ctermbg=59
 hi CtrlPLinePre term=NONE cterm=NONE ctermfg=white ctermbg=59
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_max_height = 100
+" let g:ctrlp_match_window_bottom = 0
+" let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:50,results:50'
+let g:ctrlp_max_height = 25
 let g:ctrlp_max_files = 100000
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_clear_cache_on_exit = 1

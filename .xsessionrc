@@ -119,38 +119,29 @@ fi
 
 if [ "$HOSTNAME" == "floyd" ]; then
 
-  # I don't think this works
-  # xrandr --dpi 138/eDP1
+  # Background image!
+  nitrogen --restore
 
   # Start a lovely system tray for holding icons
-  # trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
 
-  # Awesome notifications
-  # xcompmgr &
-  # dunst &
-
-  # Fix the clickpad
-  # on-screensaver &
-  # fix-clickpad > /dev/null
+  xcompmgr &
+  dunst &
+  xscreensaver &
+  nm-applet &
+  xbindkeys &
 
   # gnome-settings-daemon &
   # gnome-power-manager &
   # gnome-volume-control-applet &
-  # nm-applet &
   # mail-notification &
   # update-notifier --startup-delay=60 &
   # gnome-sound-applet &
   # bluetooth-applet &
 
-  # Custom keys
-  # xbindkeys
+  synclient TapButton3=3 TapButton2=2 tapButton1=1
 
-  # On-Screen-Display
-  # For my F12 battery monitor thingie mostly
-  # /home/awwaiid/bin/osd-init
-
-  synclient TapButton3=3 TapButton2=2
-
+  # Fix for libreoffice
   export SAL_USE_VCLPLUGIN=gen
 
   eval $(gpg-agent --daemon)
