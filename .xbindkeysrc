@@ -126,9 +126,19 @@
     Control + F2 
 
 #Insert Stuff
-"xvkbd -text '\S\[Insert]'"
-    m:0x40 + c:64
-    Mod4 + Super_L 
+"xvkbd -xsendevent -text '\S\[Insert]'"
+    m:0x40 + c:55
+    Mod4 + v 
+
+#Home
+"xvkbd -xsendevent -text '\[Home]'"
+    m:0x4 + c:113
+    Control + Left 
+
+#End
+"xvkbd -xsendevent -text '\[End]'"
+    m:0x4 + c:114
+    Control + Right 
 
 #
 # End of xbindkeys configuration
