@@ -3,9 +3,11 @@
 " Brock Wilcox (awwaiid@thelackthereof.org)
 
 " Hook in neovim python support
-if has('neovim')
-  let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
-  let &initpython = s:python_host_init
+if has('nvim')
+  " let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
+  " let &initpython = s:python_host_init
+else
+  set cm=blowfish         " Set a worthwhile encryption method
 endif
 
 " Pathogen! Loads stuff better. Load this early!
@@ -43,7 +45,6 @@ set hlsearch            " Highlight search results
 set incsearch           " Incrementally search
 set cot=longest,menu    " Complete longest-substring and show a menu
 set cpt=.,w,b,u         " During completion, only scan open windows and buffers
-set cm=blowfish         " Set a worthwhile encryption method
 set nofoldenable        " Turn off folding
 set formatoptions+=r    " Insert comment-header on enter (auto-comment)
 set formatoptions+=o    " Insert comment-header on 'o'

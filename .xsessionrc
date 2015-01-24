@@ -147,3 +147,31 @@ if [ "$HOSTNAME" == "floyd" ]; then
   eval $(gpg-agent --daemon)
 
 fi
+
+if [ "$HOSTNAME" == "misao" ]; then
+
+  nitrogen --restore
+  xmodmap /home/awwaiid/.Xmodmap >/tmp/xmodlog.txt 2>&1
+
+  # I don't think this works
+  # xrandr --dpi 138/eDP1
+
+  # Start a lovely system tray for holding icons
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+
+  xcompmgr &
+  dunst &
+
+  nm-applet &
+  xfce-power-manager &
+  # gnome-sound-applet &
+  # bluetooth-applet &
+
+  # Custom keys
+  xbindkeys
+
+  synclient TapButton3=3 TapButton2=2 TapButton1=1
+
+  export SAL_USE_VCLPLUGIN=gen
+  
+fi
