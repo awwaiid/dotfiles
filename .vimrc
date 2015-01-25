@@ -2,25 +2,69 @@
 " My Very Own .vimrc
 " Brock Wilcox (awwaiid@thelackthereof.org)
 
-" Hook in neovim python support
-if has('nvim')
-  " let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
-  " let &initpython = s:python_host_init
-else
-  set cm=blowfish         " Set a worthwhile encryption method
-endif
+" ************************
+" ******** VUNDLE ********
+" ************************
 
-" Pathogen! Loads stuff better. Load this early!
-call pathogen#infect()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'JazzCore/ctrlp-cmatcher'
+Plugin 'Pylons/waitress'
+Plugin 'Shougo/unite.vim'
+Plugin 'TagBar'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/ycmd'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bewest/argparse'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'closetag.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'davidhalter/jedi'
+Plugin 'defnull/bottle'
+Plugin 'gitignore'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'guns/vim-clojure-static'
+Plugin 'jasoncodes/ctrlp-modified.vim'
+Plugin 'jaxbot/selective-undo.vim'
+Plugin 'kana/vim-fakeclip'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kennethreitz/requests'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'mbbill/undotree'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'nosami/OmniSharpServer'
+Plugin 'rking/ag.vim'
+Plugin 'ross/requests-futures'
+Plugin 'slezica/python-frozendict'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-vinegar'
+
+call vundle#end()
+filetype plugin indent on
 
 " **********************************
 " ******** GENERAL SETTINGS ********
 " **********************************
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" Uhg... nvim doesn't have blowfish
+if has('nvim')
+else
+  set cm=blowfish         " Set a worthwhile encryption method
+endif
+
+set nocompatible        " Vim!
 
 set vb                  " I hate the beeping
 set aw                  " Auto-write when doing certain things. I added
@@ -303,9 +347,9 @@ let g:tagbar_type_ruby = {
 " ---------
 nnoremap <F3> :UndotreeToggle<CR>
 nnoremap <C-u> :UndotreeToggle<CR>
-let g:undotree_SplitLocation = 'botright'
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_HighlightSyntax = "cursorline"
+let g:undotree_WindowLayout = 3
 
 
 " Ctrl-P (Alternative to Command-T)
@@ -314,13 +358,23 @@ let g:undotree_HighlightSyntax = "cursorline"
 hi CtrlPLinePre term=NONE cterm=NONE ctermfg=white ctermbg=59
 " let g:ctrlp_match_window_bottom = 0
 " let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:50,results:50'
-let g:ctrlp_max_height = 25
-let g:ctrlp_max_files = 100000
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:100,results:100'
+" let g:ctrlp_max_height = 25
+" let g:ctrlp_max_files = 1000000
 let g:ctrlp_working_path_mode = ''
-let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'ag %s -l --nocolor -g ""'
+  \ }
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+
+" Mappings
 nmap <silent> <C-b> :CtrlPBuffer<CR>
 
 " Tabular!
