@@ -6,6 +6,15 @@
 " ******** VUNDLE ********
 " ************************
 
+let has_vundle=1
+if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
+  echo "Installing Vundle..."
+  echo ""
+  silent !mkdir -p $HOME/.vim/bundle
+  silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+  let has_vundle=0
+endif
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
