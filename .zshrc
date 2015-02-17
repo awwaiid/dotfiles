@@ -11,7 +11,7 @@ if [ -n $PS1 ]; then
   #  echo "My shell: $SHELL" >&2
   PAGER=/usr/bin/less
   PATH=$HOME/bin:$HOME/local/bin:$PATH
-  EDITOR=/usr/bin/vim
+  EDITOR=/usr/local/bin/nvim
 
   # PS1='\u@\h:\w\$ '
   #  PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
@@ -44,6 +44,9 @@ if [ -n $PS1 ]; then
 
   # Ruby/Rails
   alias be='LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.1 bundle exec'
+
+  # Experimental use nvim without thinking
+  alias vim=nvim
 
   # Make cpanm even more succinct
   PERL_CPANM_OPT="--quiet"
