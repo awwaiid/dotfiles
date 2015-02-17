@@ -177,6 +177,12 @@ if [ -n $PS1 ]; then
   # Android SDK
   export PATH=$PATH:~/local/android-sdk-linux/tools
 
+  # Fix mosh's escape key
+  export MOSH_ESCAPE_KEY='~'
+
+  # Task Warrior!
+  source /usr/local/share/doc/task/scripts/zsh/_task
+
 
 else
     : # Only for NON-interactive shells
