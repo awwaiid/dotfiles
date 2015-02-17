@@ -62,6 +62,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'matchit.zip'
 
 call vundle#end()
 filetype plugin indent on
