@@ -6,6 +6,15 @@
 " ******** VUNDLE ********
 " ************************
 
+let has_vundle=1
+if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
+  echo "Installing Vundle..."
+  echo ""
+  silent !mkdir -p $HOME/.vim/bundle
+  silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+  let has_vundle=0
+endif
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -24,6 +33,7 @@ Plugin 'closetag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi'
 Plugin 'defnull/bottle'
+Plugin 'floobits/floobits-neovim'
 Plugin 'gitignore'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
@@ -246,6 +256,7 @@ iab BRock Brock
 
 " Kill whole words like other places
 inoremap <C-BS> <C-W>
+inoremap  <C-W>
 
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
