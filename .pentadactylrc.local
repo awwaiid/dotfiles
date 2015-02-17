@@ -11,22 +11,9 @@ set passkeys+='google.com/reader':jkvrs
 nmap h H
 nmap l L
 
-map zo :js Zotero_Browser.scrapeThisPage(".")<CR>
-
 style -name tabbrowser-height-fix chrome://* <<EOM
 [dactyl-australis=true] .tabbrowser-tabs {
     max-height:       unset !important;
 }
 EOM
-
-" javascript <<EOF
-"   (function(){
-"     var zoteroPanel = document.createElement("statusbarpanel");
-"     zoteroPanel.setAttribute("id", "zotero-panel-clone");
-"     zoteroPanel.appendChild(document.getElementById("zotero-status-image"));
-"     zoteroPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
-"     document.getElementById("status-bar")
-"     .insertBefore(zoteroPanel, document.getElementById("security-button"));
-"   })();
-" EOF
 
