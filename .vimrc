@@ -254,6 +254,7 @@ iab BRock Brock
 
 " Kill whole words like other places
 inoremap <C-BS> <C-W>
+inoremap  <C-W>
 
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
