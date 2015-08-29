@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/bwilcox/code/inventory'
+let g:netrw_dirhist_2='/home/bwilcox/.pentadactyl'
+let g:netrw_dirhist_3='/home/bwilcox/code/seisa/sensu/plugins'
+let g:netrw_dirhist_4='/home/bwilcox/code/inventory/config/deploy'
+let g:netrw_dirhist_5='/home/bwilcox/code/inventory/config'
+let g:netrw_dirhist_6='/home/bwilcox/code/optics/config/deploy'
+let g:netrw_dirhist_7='/home/bwilcox/code/inventory/config'
+let g:netrw_dirhist_8='/home/bwilcox/code/bulq/config/deploy'
+let g:netrw_dirhist_9='/home/bwilcox/code/bulq/config'
