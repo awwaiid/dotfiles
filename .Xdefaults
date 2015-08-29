@@ -21,7 +21,7 @@ URxvt*background: rgba:0000/0000/0000/AAAA
 ! URxvt.fading: 40
 ! URxvt.fadeColor: [0]black
 
-! URxvt.saveLines:32767
+URxvt.saveLines:32767
 ! URxvt.scrollBar: false
 
 ! URxvt.keysym.S-Return: <C-Return>

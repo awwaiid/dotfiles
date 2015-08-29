@@ -1,6 +1,10 @@
 #!/bin/zsh
 
-. $HOME/.zprofile
+# . $HOME/.zprofile
+# if [ \( "$SHELL" != "/bin/zsh" \) -a \( -e /bin/zsh \) ]; then
+#   echo "SWITCHING TO ZSH"
+#   exec /bin/zsh $0
+# fi
 
 if [ "$HOSTNAME" == "talon.thelackthereof.org" ]; then
   TZ='America/New_York' xbindkeys
@@ -174,4 +178,35 @@ if [ "$HOSTNAME" == "misao" ]; then
 
   export SAL_USE_VCLPLUGIN=gen
   
+fi
+
+if [ "$HOSTNAME" == "koopa" ]; then
+
+  # Background image!
+  nitrogen --restore
+
+  # Start a lovely system tray for holding icons
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+
+  xcompmgr &
+  dunst -config ~/.dunstrc &
+  xscreensaver &
+  nm-applet &
+  xbindkeys &
+
+  # gnome-settings-daemon &
+  # gnome-power-manager &
+  # gnome-volume-control-applet &
+  # mail-notification &
+  # update-notifier --startup-delay=60 &
+  # gnome-sound-applet &
+  # bluetooth-applet &
+
+  synclient TapButton3=3 TapButton2=2 tapButton1=1
+
+  # Fix for libreoffice
+  export SAL_USE_VCLPLUGIN=gen
+
+  eval $(gpg-agent --daemon)
+
 fi

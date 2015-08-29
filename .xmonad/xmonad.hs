@@ -76,7 +76,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ((modm, xK_F5     ), spawn "reload-browser"),
 
       -- Experimental!
-      ((modm, xK_i     ), pasteSelection),
+      -- ((modm, xK_i     ), pasteSelection),
+      ((modm, xK_i     ), spawn "$HOME/bin/x-paste >>/tmp/hmm 2>&1"),
 
       -- close focused window
       ((modm .|. shiftMask, xK_c     ), kill),
@@ -371,7 +372,7 @@ main = xmonad
         suppressWhen = XMonad.Hooks.UrgencyHook.Focused,
         remindWhen = Every 5
       }
-  $ defaults
+  $ ewmh defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will

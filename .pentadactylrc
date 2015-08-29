@@ -1,7 +1,24 @@
-"1.0b6 (created: 2011/03/09 09:25:18)
 
 loadplugins '\.(js|penta)$'
 group user
-source! ~/.pentadactylrc.local
 
-" vim: set ft=pentadactyl:
+" Pass keys to google reader
+set passkeys+='optoro.slack.com':<C-k><C-.>
+
+" 'H' to toggle the display of the tab tree
+" nmap <silent> H :js window.TreeStyleTabService.setTabbarWidth(gBrowser.treeStyleTab.autoHide.width>1?1:225)<cr>
+
+" Use 'h' for back, 'l' for forward
+nmap h H
+nmap l L
+
+
+" **********************
+" Hack to fix tabbrowser
+" **********************
+style -name tabbrowser-height-fix chrome://* <<EOM
+[dactyl-australis=true] .tabbrowser-tabs {
+    max-height:       unset !important;
+}
+EOM
+
