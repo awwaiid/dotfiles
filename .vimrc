@@ -25,7 +25,6 @@ Plugin 'Pylons/waitress'
 Plugin 'Shougo/unite.vim'
 Plugin 'TagBar'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Valloric/ycmd'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bewest/argparse'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -63,6 +62,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'matchit.zip'
+" Plugin 'tpope/vim-haystack'
+" Plugin 'vasconcelloslf/vim-interestingwords'
+Plugin 'stefandtw/quickfix-reflector.vim'
+" Plugin 'ngmy/vim-rubocop'
 
 call vundle#end()
 filetype plugin indent on
@@ -256,8 +259,8 @@ imap <c-tab> <c-x><c-o>
 iab BRock Brock
 
 " Kill whole words like other places
-inoremap <C-BS> <C-W>
-inoremap  <C-W>
+" inoremap <C-BS> <C-W>
+" inoremap  <C-W>
 
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
@@ -270,6 +273,9 @@ filetype plugin on
 " au FileType tex set formatoptions+=a
 " au FileType tex set formatoptions+=t " For TeX documents auto-break everything
 au FileType tex set formatoptions-=c " For TeX documents auto-break everything
+
+au FileType text set comments=:******,:*****,:****,:***,:**,:*
+au FileType text set comments+=:······,:·····,:····,:···,:··,:·
 
 " LaTeX documents are fun, but lets make it even more fun!
 " This one write the file and then runs it through mdoc to make ps,pdf,txt,etc
@@ -456,56 +462,6 @@ au FileType lisp RainbowParenthesesActivate
 
 " ... none for now!
 
-
-" *****************************************
-" ******** TOO LAZY TO MAKE PLUGIN ********
-" *****************************************
-
-" From http://www.ibm.com/developerworks/linux/library/l-vim-script-4/index.html
-function! AlignAssignments ()
-    "Patterns needed to locate assignment operators...
-    let ASSIGN_OP   = '[-+*/%|&]\?=\@<!=[=~]\@!'
-    let ASSIGN_LINE = '^\(.\{-}\)\s*\(' . ASSIGN_OP . '\)'
-
-    "Locate block of code to be considered (same indentation, no blanks)
-    let indent_pat = '^' . matchstr(getline('.'), '^\s*') . '\S'
-    let firstline  = search('^\%('. indent_pat . '\)\@!','bnW') + 1
-    let lastline   = search('^\%('. indent_pat . '\)\@!', 'nW') - 1
-    if lastline < 0
-        let lastline = line('$')
-    endif
-
-    "Find the column at which the operators should be aligned...
-    let max_align_col = 0
-    let max_op_width  = 0
-    for linetext in getline(firstline, lastline)
-        "Does this line have an assignment in it?
-        let left_width = match(linetext, '\s*' . ASSIGN_OP)
-
-        "If so, track the maximal assignment column and operator width...
-        if left_width >= 0
-            let max_align_col = max([max_align_col, left_width])
-
-            let op_width      = strlen(matchstr(linetext, ASSIGN_OP))
-            let max_op_width  = max([max_op_width, op_width+1])
-         endif
-    endfor
-
-    "Code needed to reformat lines so as to align operators...
-    let FORMATTER = '\=printf("%-*s%*s", max_align_col, submatch(1),
-    \                                    max_op_width,  submatch(2))'
-
-    " Reformat lines with operators aligned in the appropriate column...
-    for linenum in range(firstline, lastline)
-        let oldline = getline(linenum)
-        let newline = substitute(oldline, ASSIGN_LINE, FORMATTER, "")
-        call setline(linenum, newline)
-    endfor
-endfunction
-
-nmap <silent>  ;=  :call AlignAssignments()<CR>
-
-
 " ******************************
 " ******** RANDOM STUFF ********
 " ******************************
@@ -522,4 +478,23 @@ autocmd GUIEnter * set visualbell t_vb=
 au FileType java set sw=2                " Width to shift and indent things
 au FileType java set ts=2                " Set tabsize to 2 (to view other people's crap)
 au FileType java set noet                " Use tabs. Even though tabs are the devil.
+
+
+
+  " experimental neovim terminal mappings
+  "   if has('nvim') && exists(':tnoremap')
+  "       tnoremap <c-h> <c-\><c-n><c-w>h
+  "           tnoremap <c-j> <c-\><c-n><c-w>j
+  "               tnoremap <c-k> <c-\><c-n><c-w>k
+  "                   tnoremap <c-l> <c-\><c-n><c-w>l
+  "                       " tnoremap <silent> <c-w>z
+  "                       <c-\><c-n>:ZoomWinTabToggle<cr>
+  "                           au WinEnter term://* startinsert
+  "                             endifèu
+
+" if has('nvim') && exists(':tnoremap')
+"   tnoremap <silent> <C-t> <c-\><c-n>:CtrlP<CR>
+"   tnoremap <silent> <C-b> <c-\><c-n>:CtrlPBuffer<CR>
+"   au WinEnter term://* startinsert
+" endif
 
