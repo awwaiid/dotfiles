@@ -75,6 +75,9 @@ if [ -n $PS1 ]; then
   # Try to fix xmonad-vs-openoffice
   export SAL_USE_VCLPLUGIN=gen
 
+  # Try to fix java + tiling issue
+  export _JAVA_AWT_WM_NONREPARENTING=1
+
   # Make a handy little calculator!
   #  calc() { bc <<< "scale=5; $*"; }
 
@@ -185,6 +188,8 @@ if [ -n $PS1 ]; then
 
   # Android SDK
   export PATH=$PATH:~/local/android-sdk-linux/tools
+
+  export PATH=~/.rakudobrew/bin:$PATH
 
   # Fix mosh's escape key
   export MOSH_ESCAPE_KEY='~'

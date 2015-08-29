@@ -22,12 +22,14 @@ import XMonad.Layout.LayoutHints
 import XMonad.Layout.ResizeScreen
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.WindowArranger
+import XMonad.Layout.SimpleFloat
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
 import XMonad.Actions.GroupNavigation
 import XMonad.Config.Gnome
 import XMonad.Util.Paste
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
 
 
 -- Help fix fullscreen apps
@@ -277,6 +279,7 @@ myLayout =
     -- ||| (noBorders $ simpleTabbed)
     ||| simpleTabbed
     ||| mirror_tiled
+    ||| simpleFloat
     --  ||| Full
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -318,7 +321,8 @@ applicationHooks = composeAll [
     -- className =? "Gimp"           --> doFloat,
     resource  =? "desktop_window" --> doIgnore,
     resource  =? "kdesktop"       --> doIgnore,
-    resource  =? "xfce4-notifyd"  --> doIgnore
+    resource  =? "xfce4-notifyd"  --> doIgnore,
+    manageDocks
     -- className =? "Ardour"         --> doShift "8",
   ]
 

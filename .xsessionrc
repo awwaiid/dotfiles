@@ -161,13 +161,13 @@ if [ "$HOSTNAME" == "misao" ]; then
   # xrandr --dpi 138/eDP1
 
   # Start a lovely system tray for holding icons
-  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false &
+  trayer --edge top --align right --widthtype request --transparent true --alpha 255 --expand false --SetDockType true &
 
   xcompmgr &
   dunst &
 
   nm-applet &
-  xfce-power-manager &
+  xfce4-power-manager &
   # gnome-sound-applet &
   # bluetooth-applet &
 
@@ -177,7 +177,7 @@ if [ "$HOSTNAME" == "misao" ]; then
   synclient TapButton3=3 TapButton2=2 TapButton1=1
 
   export SAL_USE_VCLPLUGIN=gen
-  
+
 fi
 
 if [ "$HOSTNAME" == "koopa" ]; then
