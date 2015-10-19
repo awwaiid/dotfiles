@@ -66,6 +66,9 @@ Plugin 'matchit.zip'
 " Plugin 'vasconcelloslf/vim-interestingwords'
 Plugin 'stefandtw/quickfix-reflector.vim'
 " Plugin 'ngmy/vim-rubocop'
+Plugin 'unicode.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'vim-perl/vim-perl'
 
 call vundle#end()
 filetype plugin indent on
@@ -113,6 +116,7 @@ set formatoptions+=c    " For most things don't auto-break comments
 set cpoptions+=n        " Include line-wrap indicator in number column
 let mapleader=","       " Use ',' as the Leader
 set nomodeline          " By default, don't use modelines in files
+set mouse=              " No mouse interference!
 
 " Save undo stuff in this directory (instead of local)
 set undofile
@@ -262,6 +266,10 @@ iab BRock Brock
 " inoremap <C-BS> <C-W>
 " inoremap  <C-W>
 
+" Use ctrl-j and ctrl-k to navigate next/prev on quickfix
+map <c-j> :cn<cr>
+map <c-k> :cp<cr>
+
 " ********************************************
 " ******** FILETYPE SPECIFIC SETTINGS ********
 " ********************************************
@@ -315,6 +323,7 @@ au BufNewFile,BufRead
 " Add the filetype for .als Alloy files
 au BufRead,BufNewFile *.als setfiletype alloy4
 
+au FileType clojure highlight Keyword ctermfg=yellow
 
 " *********************************
 " ******** PLUGIN SETTINGS ********
