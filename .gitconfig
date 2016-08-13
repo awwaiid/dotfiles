@@ -6,18 +6,26 @@
   default = current
 
 [alias]
-  # Ones I actually use
+  ### Ones I actually use, roughly in order of frequency
+
+  # Safely get all upstrem changes and update the current branch
+  up = "!git remote update -p; git merge --ff-only @{u}"
+
+  # Hunk based add/commit and undo
   rec = "! sh -c '(git add -p -- $@ && git commit -v) || git reset' --"
   unrec = checkout --patch
+
+  # I git-stash often, this makes it easy to undo
   unstash = stash pop
   unstash-force = "! git stash show -p | git apply && git stash drop"
+
+  ### I don't use these much
+  recent = for-each-ref --count=100 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   in  = "!git remote update -p; git log ..@{u}"
   out = log @{u}..
-  recent = for-each-ref --count=20 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
-  up = "!git remote update -p; git merge --ff-only @{u}"
 
-  # Rarely used, but handy
+  # This helps figure out where a branch came from
   oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 
   # Onese I copied and don't use, or am practicing
@@ -27,10 +35,18 @@
   # Optoro-specific
   changelog = "!echo \"# `date +%Y-%m-%d`\" ; git log --pretty=format:'* %b' --merges --first-parent origin/master..develop ; echo"
   prettymerge = "!git merge --no-ff -m \"$(git log --pretty=format:'%h - %ci %n%s%n%b%n' --merges --first-parent master..develop)\" develop"
-	diffcop = !git diffcop log -p spec/lib/product_datasources/guidance_spec.rb status --porcelain | grep M | cut -c4- | grep \"\\.rb$\" | xargs rubocop
 
 [color]
   ui = true
 
 [color "diff"]
-	whitespace = red reverse
+  whitespace = red reverse
+
+[pager]
+  # wget git-highlight from https://raw.githubusercontent.com/git/git/master/contrib/diff-highlight/diff-highlight
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[interactive]
+  diffFilter = diff-highlight
