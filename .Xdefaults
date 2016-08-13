@@ -5,7 +5,8 @@ Xft.dpi: 139
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common: default,matcher,resize-font
+! URxvt.perl-ext-common: default,matcher,resize-font
+URxvt.perl-ext-common: default,matcher,resize-font,selection-to-clipboard
 URxvt.urlLauncher: firefox
 URxvt.url-launcher: firefox
 URxvt.matcher.button: 1
@@ -13,6 +14,10 @@ URxvt.matcher.button: 1
 !URxvt.cursorColor: #ffff00
 !urxvt*cursorUnderline: true
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+/* URxvt.keysym.M-u: perl:url-select:select_next */
+/* URxvt.url-select.launcher: /usr/bin/xdg-open */
+/* URxvt.url-select.underline: true */
 
 URxvt.foreground: white
 URxvt.depth: 32
