@@ -8,4 +8,5 @@ set mark-symlinked-directories on
 
 “\e[5~”: history-search-backward
 “\e[6~”: history-search-forward
-
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line

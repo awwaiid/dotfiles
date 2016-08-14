@@ -11,7 +11,7 @@ if [ -n $PS1 ]; then
   #  echo "My file: $0" >&2
   #  echo "My shell: $SHELL" >&2
   PAGER=/usr/bin/less
-  PATH=$HOME/bin:$HOME/local/bin:$PATH
+  PATH=$HOME/bin:$HOME/local/bin:$HOME/.local/bin:$PATH
   EDITOR=/usr/local/bin/nvim
 
   # PS1='\u@\h:\w\$ '
@@ -224,3 +224,8 @@ export FZF_DEFAULT_OPTS="--reverse"
 # OPAM configuration
 [ -f ~/.opam/opam-init/init.zsh ] && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+
+export NVM_DIR="/home/bwilcox/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ `hostname` == "koopa" ] && export TERM=rxvt-unicode-256color
