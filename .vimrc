@@ -323,6 +323,11 @@ au BufNewFile,BufRead
 " Add the filetype for .als Alloy files
 au BufRead,BufNewFile *.als setfiletype alloy4
 
+" Add the filetype for .pl6 and .pm6
+au BufRead,BufNewFile *.pl6 setfiletype perl6
+au BufRead,BufNewFile *.p6  setfiletype perl6
+au BufRead,BufNewFile *.pm6 setfiletype perl6
+
 au FileType clojure highlight Keyword ctermfg=yellow
 
 " *********************************
@@ -359,7 +364,7 @@ nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_compact = 1
 let g:tagbar_width = 60
 let g:tagbar_sort = 0
-let g:tabgbar_ctags_bin="/usr/local/bin/ctags"
+let g:tagbar_ctags_bin="/usr/local/bin/ctags"
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
         \ 'm:modules',
@@ -369,6 +374,21 @@ let g:tagbar_type_ruby = {
         \ 'C:contexts',
         \ 'f:methods',
         \ 'F:singleton methods'
+    \ ]
+\ }
+let g:tagbar_type_perl6 = {
+    \ 'ctagstype' : 'perl6',
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 'c' : 'class',
+        \ 'p' : 'class'
+    \ },
+    \ 'kinds' : [
+        \ 'c:clsses',
+        \ 'b:submethods',
+        \ 'm:methods',
+        \ 's:subs',
+        \ 'p:packages'
     \ ]
 \ }
 

@@ -150,6 +150,8 @@ if [ "$HOSTNAME" == "floyd" ]; then
 
   eval $(gpg-agent --daemon)
 
+  xsetroot -cursor_name arrow
+
 fi
 
 if [ "$HOSTNAME" == "misao" ]; then
@@ -170,6 +172,14 @@ if [ "$HOSTNAME" == "misao" ]; then
   xfce4-power-manager &
   # gnome-sound-applet &
   # bluetooth-applet &
+
+  gnome-keyring-daemon &
+  # eval $(gnome-keyring-daemon)
+  # export GNOME-KEYRING-SOCKET
+  # export GNOME-KEYRING-PID
+  # export GNOME_KEYRING_SOCKET
+  # export GNOME_KEYRING_PID
+  # export GNOME_KEYRING_CONTROL
 
   # Custom keys
   xbindkeys
