@@ -12,13 +12,16 @@ set passkeys+='optoro.slack.com':<C-k><C-.>
 nmap h H
 nmap l L
 
+command proxy -nargs=1 :set! network.proxy.type=<args>
+nmap up :proxy 1<CR>
+nmap np :proxy 0<CR>
 
 " **********************
 " Hack to fix tabbrowser
 " **********************
-style -name tabbrowser-height-fix chrome://* <<EOM
-[dactyl-australis=true] .tabbrowser-tabs {
-    max-height:       unset !important;
-}
-EOM
+" style -name tabbrowser-height-fix chrome://* <<EOM
+" [dactyl-australis=true] .tabbrowser-tabs {
+"     max-height:       unset !important;
+" }
+" EOM
 

@@ -1,1 +1,1 @@
-/usr/bin/jackd -P60 -t5000 -dalsa -r48000 -p128 -n3 -D -Chw:io2 -Phw:io2
+/usr/bin/jackd -t9000 -dalsa -r48000 -p256 -n3 -Xraw -D -Chw:PCH -Phw:PCH
