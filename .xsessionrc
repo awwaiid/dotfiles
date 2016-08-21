@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh --login
 
 # . $HOME/.zprofile
 # if [ \( "$SHELL" != "/bin/zsh" \) -a \( -e /bin/zsh \) ]; then

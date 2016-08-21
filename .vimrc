@@ -56,7 +56,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
-" Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
@@ -69,6 +69,8 @@ Plugin 'stefandtw/quickfix-reflector.vim'
 Plugin 'unicode.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-perl/vim-perl'
+Plugin 'vimwiki/vimwiki'
+Plugin 'vim-scripts/vim-auto-save'
 
 call vundle#end()
 filetype plugin indent on
@@ -413,14 +415,14 @@ let g:ctrlp_match_window = 'top,order:ttb,min:1,max:100,results:100'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" let g:ctrlp_user_command = {
-"   \ 'types': {
-"     \ 1: ['.git', 'cd %s && git ls-files'],
-"     \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-"     \ },
-"   \ 'fallback': 'ag %s -l --nocolor -g ""'
-"   \ }
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --others --exclude-standard'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'ag %s -l --nocolor -g ""'
+  \ }
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Mappings
