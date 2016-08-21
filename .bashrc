@@ -12,7 +12,7 @@ if [ -n $PS1 ]; then
 
   PAGER=/usr/bin/less
   PATH=$HOME/bin:$HOME/local/bin:$PATH
-  EDITOR=vim
+  EDITOR=/usr/local/bin/nvim
 
   # PS1='\u@\h:\w\$ '
   PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '

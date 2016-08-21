@@ -32,7 +32,7 @@ Plugin 'closetag.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi'
 Plugin 'defnull/bottle'
-Plugin 'floobits/floobits-neovim'
+" Plugin 'floobits/floobits-neovim'
 Plugin 'gitignore'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
@@ -66,11 +66,13 @@ Plugin 'matchit.zip'
 " Plugin 'vasconcelloslf/vim-interestingwords'
 Plugin 'stefandtw/quickfix-reflector.vim'
 " Plugin 'ngmy/vim-rubocop'
-Plugin 'unicode.vim'
+" Plugin 'unicode.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-perl/vim-perl'
 Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/vim-auto-save'
+
+Plugin 'nixprime/cpsm'
 
 call vundle#end()
 filetype plugin indent on
@@ -217,8 +219,8 @@ imap <c-^> <C-O><c-^>
 " nnoremap <F3> /\v
 
 
-" Turn off current search highlight
-nnoremap <silent> <F4> :nohlsearch<cr>
+" Turn off current search highlight and quickfix
+nnoremap <silent> <F4> :nohlsearch \| :cclose<cr>
 
 " *** View shortcuts ***
 " Show invisible tabs
@@ -424,6 +426,8 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'ag %s -l --nocolor -g ""'
   \ }
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+
 
 " Mappings
 nmap <silent> <C-b> :CtrlPBuffer<CR>
@@ -486,6 +490,12 @@ au FileType clojure RainbowParenthesesActivate
 
 au FileType lisp RainbowParenthesesLoadRound
 au FileType lisp RainbowParenthesesActivate
+
+" Ag: don't show key help every time
+let g:ag_mapping_message=0
+
+" Create shortcut to Ag current word
+nmap g* :Ag<cr><c-w><c-w>
 
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********

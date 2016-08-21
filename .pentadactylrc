@@ -2,7 +2,6 @@
 loadplugins '\.(js|penta)$'
 group user
 
-" Pass keys to google reader
 set passkeys+='optoro.slack.com':<C-k><C-.>
 
 " 'H' to toggle the display of the tab tree
@@ -15,13 +14,4 @@ nmap l L
 command proxy -nargs=1 :set! network.proxy.type=<args>
 nmap up :proxy 1<CR>
 nmap np :proxy 0<CR>
-
-" **********************
-" Hack to fix tabbrowser
-" **********************
-" style -name tabbrowser-height-fix chrome://* <<EOM
-" [dactyl-australis=true] .tabbrowser-tabs {
-"     max-height:       unset !important;
-" }
-" EOM
 

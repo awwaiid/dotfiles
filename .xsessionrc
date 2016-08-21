@@ -203,6 +203,7 @@ if [ "$HOSTNAME" == "koopa" ]; then
   xscreensaver &
   nm-applet &
   xbindkeys &
+  xsetroot -cursor_name arrow
 
   # gnome-settings-daemon &
   # gnome-power-manager &

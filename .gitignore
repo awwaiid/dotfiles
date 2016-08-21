@@ -1,6 +1,7 @@
 .vim/.netrwhist
 .vim/spell/
+.vim/bundle/
 .xmonad/xmonad.hi
 .xmonad/xmonad.o
-.xmonad/xmonad-x86_64-linux
+.xmonad/xmonad-*
 **/.git
