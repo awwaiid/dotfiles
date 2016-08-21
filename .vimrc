@@ -6,75 +6,136 @@
 " ******** VUNDLE ********
 " ************************
 
-let has_vundle=1
-if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
-  echo "Installing Vundle..."
-  echo ""
-  silent !mkdir -p $HOME/.vim/bundle
-  silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-  let has_vundle=0
-endif
+" let has_vundle=1
+" if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
+"   echo "Installing Vundle..."
+"   echo ""
+"   silent !mkdir -p $HOME/.vim/bundle
+"   silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+"   let has_vundle=0
+" endif
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set nocompatible
+" filetype off
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'Pylons/waitress'
-Plugin 'Shougo/unite.vim'
-Plugin 'TagBar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bewest/argparse'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'closetag.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidhalter/jedi'
-Plugin 'defnull/bottle'
-" Plugin 'floobits/floobits-neovim'
-Plugin 'gitignore'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'guns/vim-clojure-highlight'
-Plugin 'guns/vim-clojure-static'
-Plugin 'jasoncodes/ctrlp-modified.vim'
-Plugin 'jaxbot/selective-undo.vim'
-Plugin 'kana/vim-fakeclip'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kennethreitz/requests'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'mbbill/undotree'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'nosami/OmniSharpServer'
-Plugin 'rking/ag.vim'
-Plugin 'ross/requests-futures'
-Plugin 'slezica/python-frozendict'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'matchit.zip'
-" Plugin 'tpope/vim-haystack'
-" Plugin 'vasconcelloslf/vim-interestingwords'
-Plugin 'stefandtw/quickfix-reflector.vim'
-" Plugin 'ngmy/vim-rubocop'
-" Plugin 'unicode.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'vim-perl/vim-perl'
-Plugin 'vimwiki/vimwiki'
-Plugin 'vim-scripts/vim-auto-save'
+" Plugin 'JazzCore/ctrlp-cmatcher'
+" Plugin 'Pylons/waitress'
+" Plugin 'Shougo/unite.vim'
+" Plugin 'TagBar'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'airblade/vim-gitgutter'
+" Plugin 'bewest/argparse'
+" Plugin 'chriskempson/vim-tomorrow-theme'
+" Plugin 'closetag.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'davidhalter/jedi'
+" Plugin 'defnull/bottle'
+" " Plugin 'floobits/floobits-neovim'
+" Plugin 'gitignore'
+" Plugin 'gmarik/Vundle.vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'guns/vim-clojure-highlight'
+" Plugin 'guns/vim-clojure-static'
+" Plugin 'jasoncodes/ctrlp-modified.vim'
+" Plugin 'jaxbot/selective-undo.vim'
+" Plugin 'kana/vim-fakeclip'
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'kennethreitz/requests'
+" Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'mbbill/undotree'
+" Plugin 'nelstrom/vim-textobj-rubyblock'
+" Plugin 'nosami/OmniSharpServer'
+" Plugin 'rking/ag.vim'
+" Plugin 'ross/requests-futures'
+" Plugin 'slezica/python-frozendict'
+" Plugin 'tacahiroy/ctrlp-funky'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'tpope/vim-classpath'
+" Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-endwise'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-vinegar'
+" Plugin 'ntpeters/vim-better-whitespace'
+" Plugin 'matchit.zip'
+" " Plugin 'tpope/vim-haystack'
+" " Plugin 'vasconcelloslf/vim-interestingwords'
+" Plugin 'stefandtw/quickfix-reflector.vim'
+" " Plugin 'ngmy/vim-rubocop'
+" " Plugin 'unicode.vim'
+" Plugin 'elixir-lang/vim-elixir'
+" Plugin 'vim-perl/vim-perl'
+" Plugin 'vimwiki/vimwiki'
+" Plugin 'vim-scripts/vim-auto-save'
 
-Plugin 'nixprime/cpsm'
+" Plugin 'nixprime/cpsm'
 
-call vundle#end()
+" call vundle#end()
+
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'Pylons/waitress'
+Plug 'Shougo/unite.vim'
+Plug 'TagBar'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'bewest/argparse'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'closetag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'davidhalter/jedi'
+Plug 'defnull/bottle'
+" Plug 'floobits/floobits-neovim'
+Plug 'gitignore'
+Plug 'gmarik/Vundle.vim'
+Plug 'godlygeek/tabular'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'jasoncodes/ctrlp-modified.vim'
+Plug 'jaxbot/selective-undo.vim'
+Plug 'kana/vim-fakeclip'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kennethreitz/requests'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'mbbill/undotree'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'nosami/OmniSharpServer'
+Plug 'rking/ag.vim'
+Plug 'ross/requests-futures'
+Plug 'slezica/python-frozendict'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'matchit.zip'
+" Plug 'tpope/vim-haystack'
+" Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'stefandtw/quickfix-reflector.vim'
+" Plug 'ngmy/vim-rubocop'
+" Plug 'unicode.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'vim-perl/vim-perl'
+Plug 'vimwiki/vimwiki'
+Plug 'vim-scripts/vim-auto-save'
+
+Plug 'nixprime/cpsm'
+
+" Add plugins to &runtimepath
+call plug#end()
+
 filetype plugin indent on
 
 " **********************************
