@@ -33,3 +33,5 @@ URxvt*color12: #7CB2D6
 ! URxvt*color4: #FFFFFF
 ! URxvt*color12: #FFFFFF
 
+URxvt.bell-command: notify-send "Beep, Beep"
+
