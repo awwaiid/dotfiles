@@ -20,32 +20,8 @@ if [ "$TERM" = "xterm-256color" ] ; then
   TERM=rxvt-unicode-256color exec zsh
 fi
 
-date >> /tmp/hmm.log
-echo $SHELL >> /tmp/hmm.log
-
-if [ -n $PS1 ]; then
-  : # These are executed only for interactive shells
-
-  #  echo "My file: $0" >&2
-  #  echo "My shell: $SHELL" >&2
-  PAGER=/usr/bin/less
-  PATH=$HOME/bin:$HOME/local/bin:$HOME/.local/bin:$PATH
-  EDITOR=/usr/local/bin/nvim
-
-  # PS1='\u@\h:\w\$ '
-  #  PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
-  #  \e[0;31m
-  #  PS1=$'\e[01;32m%n@%m\e[00m:\e[01;33m%~\e[00m$ '
-  #  PS1="%{%B$fg[green]%}%n%{$reset_color%}%{%B$fg[cyan]%}@%m:%{%B$fg[yellow]%}%~%{$reset_color%}$ "
-  if [ -n "$ZSH_VERSION" ]; then
-    autoload -U colors && colors
-  fi
-  PS1="%{%B$fg[green]%}%n@%m:%{%B$fg[yellow]%}%~%{$reset_color%}$ "
->>>>>>> 71499e1eabe677159892baf89b56b11b2f453c26
-
 PAGER=/usr/bin/less
-PATH=$HOME/bin:$HOME/local/bin:$PATH
-# EDITOR=/usr/local/bin/nvim
+PATH=$HOME/bin:$HOME/local/bin:$HOME/.local/bin:$PATH
 EDITOR=nvim
 
 # Fix HOSTNAME if it hasn't been set
@@ -102,6 +78,7 @@ HISTCONTROL=ignoredups        # No dups in bash_history
 
 # Bunch of zsh-specific stuff
 if [ -n "$ZSH_VERSION" ]; then
+  # echo "Setting up zsh stuff"
   setopt APPEND_HISTORY         # append rather than overwrite history file.
   setopt HIST_EXPIRE_DUPS_FIRST # allow dups, but expire old ones when I hit HISTSIZE
   setopt EXTENDED_HISTORY       # save timestamp and runtime information
@@ -190,6 +167,7 @@ if [ -n "$ZSH_VERSION" ]; then
   bindkey -M emacs '' backward-kill-word
 fi
 
+# echo "Setting up other stuff"
 
 # Fix mosh's escape key
 export MOSH_ESCAPE_KEY='~'
@@ -216,6 +194,7 @@ export PATH=~/.rakudobrew/bin:$PATH
 
 # Python: pyenv
 if [ -d ~/.pyenv ] ; then
+  # echo "Setting up pyenv"
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
@@ -224,6 +203,7 @@ fi
 
 # NodeJS: nvm
 if [ -d ~/.nvm ] ; then
+  # echo "Setting up nvm"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
@@ -233,6 +213,7 @@ PERL_CPANM_OPT="--quiet"
 
 # Perl5: Perlbrew
 if [ -f ~/local/perlbrew/etc/bashrc ]; then
+  # echo "Setting up perlbrew"
   export PERLBREW_ROOT=~/local/perlbrew
   source ~/local/perlbrew/etc/bashrc
 fi
@@ -243,6 +224,7 @@ alias be='bundle exec'
 
 # Ruby: rvm
 if [ -f ~/.rvm/scripts/rvm ]; then
+  # echo "Setting up rvm"
   source ~/.rvm/scripts/rvm
 fi
 
@@ -251,8 +233,7 @@ fi
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-
-export NVM_DIR="/home/bwilcox/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 [ `hostname` == "koopa" ] && export TERM=rxvt-unicode-256color
+
+# echo "DONE loading zshrc!"
+

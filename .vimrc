@@ -79,11 +79,11 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'Pylons/waitress'
 Plug 'Shougo/unite.vim'
 Plug 'TagBar'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'airblade/vim-gitgutter'
 Plug 'bewest/argparse'
 Plug 'chriskempson/vim-tomorrow-theme'
