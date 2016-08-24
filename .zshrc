@@ -187,7 +187,9 @@ export FZF_DEFAULT_OPTS="--reverse"
 export PATH=$PATH:~/local/android-sdk-linux/tools
 
 # Perl6: Rakudobrew
-export PATH=~/.rakudobrew/bin:$PATH
+if [ -d ~/.rakudobrew ] ; then
+  export PATH=~/.rakudobrew/bin:$PATH
+fi
 
 # OCaml: OPAM configuration
 [ -f ~/.opam/opam-init/init.zsh ] && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -228,7 +230,9 @@ if [ -f ~/.rvm/scripts/rvm ]; then
   source ~/.rvm/scripts/rvm
 fi
 
-. /home/awwaiid/.nix-profile/etc/profile.d/nix.sh
+if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
+  source ~/.nix-profile/etc/profile.d/nix.sh
+fi
 
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
