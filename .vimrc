@@ -164,7 +164,7 @@ set sbr=\ \ ↳\          " Use "↳ " to show line wrapping
 set breakindent         " When wrapping long lines, keep the indent
 set lbr                 " wrap lines to a whole word when convenient
 set sw=2                " Width to shift and indent things
-set ts=2                " Set tabsize to 4 (to view other people's crap)
+set ts=2                " Set skinny tabsize
 set bs=indent,eol,start " allow backspacing over everything in insert mode
 set ai                  " always set autoindenting on
 set ic smartcase        " Ignore case during searches, unless there is a capital
@@ -185,7 +185,7 @@ set formatoptions+=r    " Insert comment-header on enter (auto-comment)
 set formatoptions+=o    " Insert comment-header on 'o'
 set formatoptions+=q    " Format comments with gq
 set formatoptions+=c    " For most things don't auto-break comments
-set cpoptions+=n        " Include line-wrap indicator in number column
+" set cpoptions+=n        " Include line-wrap indicator in number column
 let mapleader=","       " Use ',' as the Leader
 set nomodeline          " By default, don't use modelines in files
 set mouse=              " No mouse interference!
@@ -446,7 +446,8 @@ nnoremap <silent> <C-g> :TagbarOpenAutoClose<cr>
 let g:tagbar_compact = 1
 let g:tagbar_width = 60
 let g:tagbar_sort = 0
-let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+" let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+let g:tagbar_ctags_bin="/usr/bin/ctags"
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
         \ 'm:modules',
