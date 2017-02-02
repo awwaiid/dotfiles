@@ -1,5 +1,5 @@
 [user]
-  email = bwilcox@optoro.com
+  email = awwaiid@thelackthereof.org
   name = Brock Wilcox
 
 [push]
@@ -50,3 +50,8 @@
 
 [interactive]
   diffFilter = diff-highlight
+
+[include]
+  # Per-machine overrides
+  path = ~/.gitconfig.local
+
