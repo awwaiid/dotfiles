@@ -115,7 +115,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fireplace'
+" Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
@@ -128,10 +128,16 @@ Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'unicode.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'vim-perl/vim-perl'
+Plug 'vim-perl/vim-perl6'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/vim-auto-save'
 
 Plug 'nixprime/cpsm'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tbabej/taskwiki'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -142,19 +148,20 @@ filetype plugin indent on
 " ******** GENERAL SETTINGS ********
 " **********************************
 
-" Uhg... nvim doesn't have blowfish
 if has('nvim')
+  set icm=nosplit         " Incremental preview commands in the same view
 else
+  " Uhg... nvim doesn't have blowfish
   set cm=blowfish         " Set a worthwhile encryption method
 endif
 
 set nocompatible        " Vim!
 
 set vb                  " I hate the beeping
-set aw                  " Auto-write when doing certain things. I added
-                        "   this so I could switch buffers more easily.
-set sbr=↳\              " Use "↳ " to show line wrapping
+set aw                  " Auto-write when doing buffer-switching and such
 set lcs=tab:→⋅,trail:⋅  " Use "→⋅⋅⋅" in 'list' mode to show tabs
+set sbr=\ \ ↳\          " Use "↳ " to show line wrapping
+set breakindent         " When wrapping long lines, keep the indent
 set lbr                 " wrap lines to a whole word when convenient
 set sw=2                " Width to shift and indent things
 set ts=2                " Set tabsize to 4 (to view other people's crap)
@@ -249,6 +256,7 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 iab Ydtime <c-r>=strftime("%Y-%m-%d-%H-%M")<cr>
 iab Ydate <c-r>=strftime("%Y-%m-%d")<cr>
 iab Yldate <c-r>=strftime("$%Y\\cdot%m\\cdot%d$")<cr>
+iab Yj <c-r>=strftime("%Y-%m-%d %H:%M %a -")<cr>
 
 " Spell checking is usefull for all sorts of things
 com! Spellcheck :execute '!aspell -c "%"' | edit
@@ -395,6 +403,15 @@ au BufRead,BufNewFile *.pm6 setfiletype perl6
 
 au FileType clojure highlight Keyword ctermfg=yellow
 
+" Avoid encryption leakage
+au BufRead,BufNewFile ~/notes/* set undodir=~/notes/.vim_undo
+au BufRead,BufNewFile ~/notes/* set backupdir=~/notes/.vim_backup
+au BufRead,BufNewFile ~/notes/* set dir=~/notes/.vim_backup
+
+au BufRead,BufNewFile ~/notes/* set nobackup
+au BufRead,BufNewFile ~/notes/* set noundofile
+au BufRead,BufNewFile ~/notes/* set noswapfile
+
 " *********************************
 " ******** PLUGIN SETTINGS ********
 " *********************************
@@ -455,6 +472,13 @@ let g:tagbar_type_perl6 = {
         \ 's:subs',
         \ 'p:packages'
     \ ]
+\ }
+let g:tagbar_type_vimwiki = {
+    \ 'ctagstype' : 'vimwiki',
+    \ 'kinds'     : [
+        \ 'h:headings'
+    \ ],
+    \ 'sort'    : 0
 \ }
 
 " Undo-Tree
@@ -552,11 +576,22 @@ au FileType clojure RainbowParenthesesActivate
 au FileType lisp RainbowParenthesesLoadRound
 au FileType lisp RainbowParenthesesActivate
 
-" Ag: don't show key help every time
+" Ag
+" --------------------
+" Don't show key help every time
 let g:ag_mapping_message=0
 
 " Create shortcut to Ag current word
 nmap g* :Ag<cr><c-w><c-w>
+
+" Vimwiki
+" --------------------
+let g:vimwiki_list = [{'path': '~/notes/'}]
+" au BufRead,BufNewFile ~/notes/*.wiki lcd %:p:h
+au BufRead,BufNewFile ~/notes/* set concealcursor=nv
+au BufRead,BufNewFile ~/notes/* let b:ctrlp_working_path_mode = 'c'
+
+
 
 " ****************************************
 " ******** HOST SPECIFIC SETTINGS ********
@@ -600,3 +635,4 @@ au FileType java set noet                " Use tabs. Even though tabs are the de
 "   au WinEnter term://* startinsert
 " endif
 
+" let g:airline#extensions#tabline#enabled = 1
