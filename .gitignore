@@ -6,3 +6,4 @@
 .xmonad/xmonad.o
 .xmonad/xmonad-*
 **/.git
+.xmonad/xmonad.errors
