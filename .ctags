@@ -24,3 +24,12 @@
 
 --regex-make=/^([^:# \t]+)[ \t]*[:]{1,2}/\1/t,targets/
 
+--langdef=vimwiki
+--langmap=vimwiki:.wiki
+--regex-vimwiki=/^=[ \t]+(.+)[ \t]+=$/\1/h,header/
+--regex-vimwiki=/^==[ \t]+(.+)[ \t]+==$/. \1/h,header/
+--regex-vimwiki=/^===[ \t]+(.+)[ \t]+===$/.  \1/h,header/
+--regex-vimwiki=/^====[ \t]+(.+)[ \t]+====$/.   \1/h,header/
+--regex-vimwiki=/^=====[ \t]+(.+)[ \t]+=====$/.    \1/h,header/
+--regex-vimwiki=/^======[ \t]+(.+)[ \t]+======$/.     \1/h,header/
+
