@@ -50,7 +50,7 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
 
 alias ls='ls -F --color --dereference-command-line-symlink-to-dir'
 alias ocaml='rlwrap ocaml || ocaml'
-alias open='gnome-open'
+alias open='xdg-open'
 alias log-optoro='task log proj:optoro'
 
 # Experimental use nvim without thinking
@@ -237,7 +237,10 @@ fi
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 
-[ `hostname` == "koopa" ] && export TERM=rxvt-unicode-256color
+[[ `hostname` == "koopa" ]] && export TERM=rxvt-unicode-256color
 
 # echo "DONE loading zshrc!"
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 

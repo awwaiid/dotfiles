@@ -278,6 +278,8 @@ myLayout =
   $ tiled
     -- ||| (noBorders $ simpleTabbed)
     ||| simpleTabbed
+    ||| simpleTabbedLeft
+    -- ||| tabbedLeft shrinkText def { }
     ||| mirror_tiled
     ||| simpleFloat
     --  ||| Full
@@ -322,6 +324,7 @@ applicationHooks = composeAll [
     resource  =? "desktop_window" --> doIgnore,
     resource  =? "kdesktop"       --> doIgnore,
     resource  =? "xfce4-notifyd"  --> doIgnore,
+    resource  =? "keepassx"       --> doFloat,
     manageDocks
     -- className =? "Ardour"         --> doShift "8",
   ]
