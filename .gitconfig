@@ -2,8 +2,16 @@
   email = awwaiid@thelackthereof.org
   name = Brock Wilcox
 
+[core]
+  editor = vim
+
 [push]
   default = current
+  recurseSubmodules = check
+  followTags = true
+
+[status]
+  showUntrackedFiles = all
 
 [alias]
   ### Ones I actually use, roughly in order of frequency
@@ -18,10 +26,13 @@
   # I git-stash often, this makes it easy to undo
   unstash = stash pop
   unstash-force = "! git stash show -p | git apply && git stash drop"
+  stash-all = stash save --include-untracked
+  stash-rec = stash save --patch
 
   ### I don't use these much
-  recent = for-each-ref --count=100 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
-  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  recent = "! git for-each-ref --count=100 --sort=-committerdate --format='%(committerdate:short) %(refname:short)' | grep -v origin | head -10"
+  recent-all = for-each-ref --count=100 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --topo-order
   in  = "!git remote update -p; git log ..@{u}"
   out = log @{u}..
 
@@ -29,15 +40,22 @@
   oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 
   # Onese I copied and don't use, or am practicing
-  ci  = commit
+  ci  = commit -v
   s = status -sb
+  unmerged = branch --no-merged master
 
   # Optoro-specific
   changelog = "!echo \"# `date +%Y-%m-%d`\" ; git log --pretty=format:'* %b' --merges --first-parent origin/master..develop ; echo"
   prettymerge = "!git merge --no-ff -m \"$(git log --pretty=format:'%h - %ci %n%s%n%b%n' --merges --first-parent master..develop)\" develop"
 
 [color]
-  ui = true
+  branch = auto
+  diff = auto
+  grep = auto
+  interactive = auto
+  showbranch = auto
+  status = auto
+  ui = auto
 
 [color "diff"]
   whitespace = red reverse
@@ -55,3 +73,5 @@
   # Per-machine overrides
   path = ~/.gitconfig.local
 
+[rerere]
+	enabled = true
